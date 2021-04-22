@@ -1,0 +1,29 @@
+name: reshare-analytics CI
+
+on: [push, pull_request]
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+    - name: Start postgres
+      run: sudo service postgresql start
+    - name: Create user
+      run: sudo runuser -l postgres -c 'createuser -s runner'
+    - name: Create reshare_dev database
+      run: createdb reshare_dev
+    - name: Create schema in reshare_dev
+      run: psql -bq -v ON_ERROR_STOP=on -d reshare_dev -c "create schema reshare_reporting;"
+    - name: Download reshare_dev database
+      run: curl -sSO https://glintcore.net:8443/ldp/reshare_dev.sql.gz
+    - name: Load reshare_dev data
+      run: zcat reshare_dev.sql.gz | psql -o /dev/null -bq -v ON_ERROR_STOP=on -d reshare_dev
+    - name: Clean up reshare_dev file
+      run: rm -f reshare_dev.sql.gz
+    - name: Vacuum reshare_dev database
+      run: vacuumdb -qz -d reshare_dev
+    - name: Run derived table queries in reshare_dev
+      run: ./run-ci.sh
