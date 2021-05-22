@@ -7,4 +7,4 @@ SELECT
         OR rs_to_status = 'REQ_FILLED_LOCALLY') AS received,
     (sum(1) FILTER (WHERE rs_to_status = 'REQ_CHECKED_IN') / cast(sum(1) FILTER (WHERE rs_to_status = 'REQ_VALIDATED') AS decimal)) AS filled_ratio
 FROM
-    local.north_req_stats;
+    reshare_reporting.north_req_stats;
