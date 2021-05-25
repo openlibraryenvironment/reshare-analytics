@@ -10,4 +10,4 @@ SELECT
     cast(count(*) FILTER (WHERE ss_to_status = 'RES_ITEM_SHIPPED'
             AND ss_from_status = 'RES_AWAIT_SHIP') AS decimal) / count(DISTINCT ss_req_id) AS supplied_ratio
 FROM
-    reshare_reporting.north_sup_stats;
+    reshare_derived.north_sup_stats;

@@ -1,8 +1,8 @@
-DROP TABLE IF EXISTS reshare_reporting.north_sup_stats;
+DROP TABLE IF EXISTS reshare_derived.north_sup_stats;
 
 -- Create a derived table containing information about supplier statistics
 
-CREATE TABLE reshare_reporting.north_sup_stats AS
+CREATE TABLE reshare_derived.north_sup_stats AS
 SELECT
     pra.pra_id AS ss_id,
     pra.pra_patron_request_fk AS ss_req_id,
@@ -20,14 +20,14 @@ ORDER BY
     pra.pra_patron_request_fk,
     pra.pra_date_created ASC;
 
-CREATE INDEX ON reshare_reporting.north_sup_stats (ss_id);
+CREATE INDEX ON reshare_derived.north_sup_stats (ss_id);
 
-CREATE INDEX ON reshare_reporting.north_sup_stats (ss_req_id);
+CREATE INDEX ON reshare_derived.north_sup_stats (ss_req_id);
 
-CREATE INDEX ON reshare_reporting.north_sup_stats (ss_date_created);
+CREATE INDEX ON reshare_derived.north_sup_stats (ss_date_created);
 
-CREATE INDEX ON reshare_reporting.north_sup_stats (ss_from_status);
+CREATE INDEX ON reshare_derived.north_sup_stats (ss_from_status);
 
-CREATE INDEX ON reshare_reporting.north_sup_stats (ss_to_status);
+CREATE INDEX ON reshare_derived.north_sup_stats (ss_to_status);
 
-CREATE INDEX ON reshare_reporting.north_sup_stats (ss_message);
+CREATE INDEX ON reshare_derived.north_sup_stats (ss_message);

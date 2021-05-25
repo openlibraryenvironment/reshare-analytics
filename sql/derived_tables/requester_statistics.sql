@@ -1,8 +1,8 @@
-DROP TABLE IF EXISTS reshare_reporting.north_req_stats;
+DROP TABLE IF EXISTS reshare_derived.north_req_stats;
 
 -- Create a derived table containing information about requester statistics
 
-CREATE TABLE reshare_reporting.north_req_stats AS
+CREATE TABLE reshare_derived.north_req_stats AS
 SELECT
     pra.pra_id AS rs_id,
     pra.pra_patron_request_fk AS rs_req_id,
@@ -20,14 +20,14 @@ ORDER BY
     pra.pra_patron_request_fk,
     pra.pra_date_created ASC;
 
-CREATE INDEX ON reshare_reporting.north_req_stats (rs_id);
+CREATE INDEX ON reshare_derived.north_req_stats (rs_id);
 
-CREATE INDEX ON reshare_reporting.north_req_stats (rs_req_id);
+CREATE INDEX ON reshare_derived.north_req_stats (rs_req_id);
 
-CREATE INDEX ON reshare_reporting.north_req_stats (rs_date_created);
+CREATE INDEX ON reshare_derived.north_req_stats (rs_date_created);
 
-CREATE INDEX ON reshare_reporting.north_req_stats (rs_from_status);
+CREATE INDEX ON reshare_derived.north_req_stats (rs_from_status);
 
-CREATE INDEX ON reshare_reporting.north_req_stats (rs_to_status);
+CREATE INDEX ON reshare_derived.north_req_stats (rs_to_status);
 
-CREATE INDEX ON reshare_reporting.north_req_stats (rs_message);
+CREATE INDEX ON reshare_derived.north_req_stats (rs_message);
