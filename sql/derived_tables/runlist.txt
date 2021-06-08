@@ -1,3 +1,4 @@
-requester_statistics.sql
-supplier_statistics.sql
-
+north_req_stats.sql
+north_sup_stats.sql
+north_req_turnaround_detail.sql
+north_sup_turnaround_detail.sql
