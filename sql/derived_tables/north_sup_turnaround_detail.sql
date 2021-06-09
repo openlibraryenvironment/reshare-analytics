@@ -95,7 +95,9 @@ CREATE INDEX ON reshare_derived.north_stat_ship (sts_date_created);
 
 CREATE INDEX ON reshare_derived.north_stat_ship (sts_req_id);
 
-CREATE INDEX ON reshare_derived.north_stat_ship (sts_status);
+CREATE INDEX ON reshare_derived.north_stat_ship (sts_from_status);
+
+CREATE INDEX ON reshare_derived.north_stat_ship (sts_to_status);
 
 -- Not sure if listagg in redshift can mimic the array_agg functionality, won't know until we can test. Necessary because an item can be received multiple times, see SOUTH-6.
 DROP TABLE IF EXISTS reshare_derived.north_stat_rec;
