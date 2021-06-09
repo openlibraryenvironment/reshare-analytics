@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS reshare_derived.north_stat_reqs;
 CREATE TABLE reshare_derived.north_stat_reqs AS SELECT DISTINCT
     pr.pr_hrid AS str_hrid,
     pr.pr_title AS str_title,
-    pr.pr_reshare_derived_call_number AS str_call_number,
+    pr.pr_local_call_number AS str_call_number,
     pr.pr_selected_item_barcode AS str_barcode,
     pr.pr_resolved_req_inst_symbol_fk AS str_requester,
     pr.pr_date_created AS str_date_created,
