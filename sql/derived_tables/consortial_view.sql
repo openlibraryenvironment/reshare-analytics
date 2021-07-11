@@ -14,9 +14,8 @@ FROM
     JOIN reshare_reshare_north_rs.status s ON s.st_id = prr.prr_state_fk
 WHERE
     s.st_code = 'REQ_REQUEST_COMPLETE'
-    OR s.st_code = 'REQ_SHIPPED';
-
-INSERT INTO reshare_derived.consortial_view
+    OR s.st_code = 'REQ_SHIPPED'
+UNION ALL
 SELECT
     'EAST' AS cv_requester,
     prr.prr_date_created AS cv_date_created,
@@ -30,9 +29,8 @@ FROM
     JOIN reshare_reshare_east_rs.status s ON s.st_id = prr.prr_state_fk
 WHERE
     s.st_code = 'REQ_REQUEST_COMPLETE'
-    OR s.st_code = 'REQ_SHIPPED';
-
-INSERT INTO reshare_derived.consortial_view
+    OR s.st_code = 'REQ_SHIPPED'
+UNION ALL
 SELECT
     'SOUTH' AS cv_requester,
     prr.prr_date_created AS cv_date_created,
@@ -46,9 +44,8 @@ FROM
     JOIN reshare_reshare_south_rs.status s ON s.st_id = prr.prr_state_fk
 WHERE
     s.st_code = 'REQ_REQUEST_COMPLETE'
-    OR s.st_code = 'REQ_SHIPPED';
-
-INSERT INTO reshare_derived.consortial_view
+    OR s.st_code = 'REQ_SHIPPED'
+UNION ALL
 SELECT
     'WEST' AS cv_requester,
     prr.prr_date_created AS cv_date_created,
