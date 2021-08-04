@@ -14,7 +14,7 @@ FROM
     JOIN reshare_rs.status s ON s.st_id = prr.prr_state_fk
 WHERE
     s.st_code = 'REQ_REQUEST_COMPLETE'
-    OR s.st_code = 'REQ_SHIPPED'
+    OR s.st_code = 'REQ_SHIPPED';
 
 CREATE INDEX ON reshare_derived.consortial_view (cv_requester);
 
