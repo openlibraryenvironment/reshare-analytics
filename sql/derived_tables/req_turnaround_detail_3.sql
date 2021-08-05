@@ -1,7 +1,6 @@
 DROP TABLE IF EXISTS reshare_derived.rtat_rec;
 
-CREATE TABLE reshare_derived.rtat_rec AS
-SELECT
+CREATE TABLE reshare_derived.rtat_rec AS SELECT DISTINCT
     pra."__origin" AS rtre_requester,
     pra.pra_date_created AS rtre_date_created,
     pra.pra_patron_request_fk AS rtre_req_id,

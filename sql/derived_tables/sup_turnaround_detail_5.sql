@@ -1,8 +1,7 @@
 -- Not sure if listagg in redshift can mimic the array_agg functionality, won't know until we can test. Necessary because an item can be received multiple times, see SOUTH-6.
 DROP TABLE IF EXISTS reshare_derived.stat_rec;
 
-CREATE TABLE reshare_derived.stat_rec AS
-SELECT
+CREATE TABLE reshare_derived.stat_rec AS SELECT DISTINCT
     pra."__origin" AS stre_supplier,
     (array_agg(pra.pra_date_created ORDER BY pra.pra_date_created ASC))[1] AS stre_date_created,
     pra.pra_patron_request_fk AS stre_req_id,

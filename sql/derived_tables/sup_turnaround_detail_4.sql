@@ -1,7 +1,6 @@
 DROP TABLE IF EXISTS reshare_derived.stat_ship;
 
-CREATE TABLE reshare_derived.stat_ship AS
-SELECT
+CREATE TABLE reshare_derived.stat_ship AS SELECT DISTINCT
     pra."__origin" AS sts_supplier,
     pra.pra_date_created AS sts_date_created,
     pra.pra_patron_request_fk AS sts_req_id,
