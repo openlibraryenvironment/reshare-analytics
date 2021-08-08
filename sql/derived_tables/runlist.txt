@@ -1,5 +1,12 @@
-north_req_stats.sql
-north_sup_stats.sql
-north_req_turnaround_detail.sql
-north_sup_turnaround_detail.sql
+req_stats.sql
+sup_stats.sql
+req_turnaround_detail_1.sql
+req_turnaround_detail_2.sql
+req_turnaround_detail_3.sql
+sup_turnaround_detail_1.sql
+sup_turnaround_detail_2.sql
+sup_turnaround_detail_3.sql
+sup_turnaround_detail_4.sql
+sup_turnaround_detail_5.sql
+sup_turnaround_detail_6.sql
 consortial_view.sql
