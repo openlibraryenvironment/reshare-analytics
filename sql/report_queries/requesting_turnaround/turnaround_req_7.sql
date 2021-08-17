@@ -9,14 +9,14 @@ SELECT
     ntr.rtr_date_created AS created,
     nts.rts_date_created AS shipped,
     ntr2.rtre_date_created AS received,
-    (nts.rts_date_created - ntr.rtr_date_created) AS time_to_shipment,
-    (ntr2.rtre_date_created - nts.rts_date_created) AS time_to_received,
+    (nts.rts_date_created - ntr.rtr_date_created) AS time_to_ship,
+    (ntr2.rtre_date_created - nts.rts_date_created) AS time_to_receipt,
     (ntr2.rtre_date_created - ntr.rtr_date_created) AS total_time
 FROM
     reshare_derived.rtat_reqs ntr
     LEFT JOIN reshare_derived.rtat_ship nts ON ntr.rtr_id = nts.rts_req_id
     LEFT JOIN reshare_derived.rtat_rec ntr2 ON ntr.rtr_id = ntr2.rtre_req_id
-    LEFT JOIN reshare_reshare_rs.symbol s ON s.sym_id = ntr.rtr_supplier
+    LEFT JOIN reshare_rs.symbol s ON s.sym_id = ntr.rtr_supplier
 WHERE
     nts.rts_date_created IS NOT NULL
     AND ntr2.rtre_date_created IS NOT NULL;

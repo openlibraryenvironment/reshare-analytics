@@ -15,7 +15,7 @@ FROM (
         nsts2.stst_to_status AS two_to,
         nsts.stst_message AS one_message,
         nsts2.stst_message AS two_message,
-        ((nsts2.stst_date_created - nsts.stst_date_created) AS date_diff
+        (nsts2.stst_date_created - nsts.stst_date_created) AS date_diff
     FROM reshare_derived.sup_tat_stats nsts, reshare_derived.sup_tat_stats nsts2
     WHERE
         nsts.stst_req_id = nsts2.stst_req_id
