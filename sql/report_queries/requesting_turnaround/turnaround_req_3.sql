@@ -1,5 +1,5 @@
 SELECT
-    requestor,
+    requester,
     avg(date_diff) AS avg_time_total,
     percentile_cont(0.5) WITHIN GROUP (ORDER BY date_diff) AS med_time_total
 FROM (

@@ -11,9 +11,9 @@ SELECT
     nstf.stf_date_created AS filled,
     nsts.sts_date_created AS shipped,
     nstre.stre_date_created AS received,
-    (nstf.stf_date_created - nsta.sta_date_created) AS time_to_filled,
-    (nsts.sts_date_created - nsta.sta_date_created) AS time_to_shipped,
-    (nstre.stre_date_created - nsta.sta_date_created) AS time_to_received,
+    (nstf.stf_date_created - nsta.sta_date_created) AS time_to_fill,
+    (nsts.sts_date_created - nsta.sta_date_created) AS time_to_ship,
+    (nstre.stre_date_created - nsta.sta_date_created) AS time_to_receipt,
     (nstre.stre_date_created - nsta.sta_date_created) AS total_time
 FROM
     reshare_derived.stat_reqs nstr
@@ -21,7 +21,7 @@ FROM
     LEFT JOIN reshare_derived.stat_fill nstf ON nstr.str_id = nstf.stf_req_id
     LEFT JOIN reshare_derived.stat_ship nsts ON nstr.str_id = nsts.sts_req_id
     LEFT JOIN reshare_derived.stat_rec nstre ON nstr.str_id = nstre.stre_req_id
-    LEFT JOIN reshare_reshare_rs.symbol s ON s.sym_id = nstr.str_requester
+    LEFT JOIN reshare_rs.symbol s ON s.sym_id = nstr.str_requester
 WHERE
     nsts.sts_date_created IS NOT NULL
     AND nstre.stre_date_created IS NOT NULL;
