@@ -26,7 +26,7 @@ SELECT
         ELSE
             0
         END) AS received,
-    (sum(
+    round((sum(
             CASE WHEN rs_to_status = 'REQ_CHECKED_IN' THEN
                 1
             ELSE
@@ -36,7 +36,7 @@ SELECT
                     1
                 ELSE
                     0
-                END) AS decimal)) AS filled_ratio
+                END) AS decimal)), 2) AS filled_ratio
 FROM
     reshare_derived.req_stats
 GROUP BY
@@ -69,7 +69,7 @@ SELECT
         ELSE
             0
         END) AS received,
-    (sum(
+    round((sum(
             CASE WHEN rs_to_status = 'REQ_CHECKED_IN' THEN
                 1
             ELSE
@@ -79,7 +79,7 @@ SELECT
                     1
                 ELSE
                     0
-                END) AS decimal)) AS filled_ratio
+                END) AS decimal)), 2) AS filled_ratio
 FROM
     reshare_derived.req_stats;
 
