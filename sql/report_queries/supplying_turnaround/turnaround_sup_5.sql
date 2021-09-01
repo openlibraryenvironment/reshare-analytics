@@ -2,8 +2,8 @@ SELECT
     nsts.stst_supplier AS supplier,
     count(*) AS reqs_btwn_48_72
 FROM
-    local.sup_tat_stats nsts,
-    local.sup_tat_stats nsts2
+    reshare_derived.sup_tat_stats nsts,
+    reshare_derived.sup_tat_stats nsts2
 WHERE
     nsts.stst_req_id = nsts2.stst_req_id
     AND (nsts.stst_from_status IS NULL
