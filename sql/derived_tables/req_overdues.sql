@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS reshare_derived.req_overdue;
+
 CREATE TABLE reshare_derived.req_overdue AS SELECT DISTINCT
     pr."__origin" AS ro_requester,
     de.de_name AS ro_requester_nice_name,

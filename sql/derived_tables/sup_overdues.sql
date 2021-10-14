@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS reshare_derived.sup_overdue;
+
 CREATE TABLE reshare_derived.sup_overdue AS SELECT DISTINCT
     pr."__origin" AS so_supplier,
     de.de_name AS so_supplier_nice_name,
