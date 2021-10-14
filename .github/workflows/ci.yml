@@ -27,5 +27,3 @@ jobs:
       run: vacuumdb -qz -d reshare_dev
     - name: Run derived table queries in reshare_dev
       run: ./run-ci.sh
-    - name: Run again to test drop tables
-      run: ./run-ci.sh
