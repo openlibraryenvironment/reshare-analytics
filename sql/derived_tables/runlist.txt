@@ -10,3 +10,5 @@ sup_turnaround_detail_4.sql
 sup_turnaround_detail_5.sql
 sup_turnaround_detail_6.sql
 consortial_view.sql
+req_overdues.sql
+sup_overdues.sql
