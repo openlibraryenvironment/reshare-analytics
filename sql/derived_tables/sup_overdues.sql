@@ -25,3 +25,27 @@ WHERE
 ORDER BY
     pr.pr_hrid;
 
+CREATE INDEX ON reshare_derived.sup_overdue (so_supplier);
+
+CREATE INDEX ON reshare_derived.sup_overdue (so_supplier_nice_name);
+
+CREATE INDEX ON reshare_derived.sup_overdue (so_hrid);
+
+CREATE INDEX ON reshare_derived.sup_overdue (so_title);
+
+CREATE INDEX ON reshare_derived.sup_overdue (so_requester_sym);
+
+CREATE INDEX ON reshare_derived.sup_overdue (so_supplier_url);
+
+CREATE INDEX ON reshare_derived.sup_overdue (so_supplier_sym);
+
+CREATE INDEX ON reshare_derived.sup_overdue (so_res_state);
+
+CREATE INDEX ON reshare_derived.sup_overdue (so_due_date_rs);
+
+CREATE INDEX ON reshare_derived.sup_overdue (so_local_call_number);
+
+CREATE INDEX ON reshare_derived.sup_overdue (so_item_barcode);
+
+CREATE INDEX ON reshare_derived.sup_overdue (so_last_updated);
+
