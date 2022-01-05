@@ -6,12 +6,12 @@ Brief description: This report provides time calculations (average and median) f
 
 ### Definitions
 
-- Time to fill: time between supplier assignment and request fill
-- Time to ship: time between request fill and material shipment
-- Time to receipt: time between material shipment and material receipt
-- Time total: time between supplier assignment and material receipt 
+- Time to fill: time between supplier assignment and request filled
+- Time to ship: time between request filled and item shipped
+- Time to receipt: time between item shipped and item received
+- Time total: time between supplier assignment and item received 
 
-NOTE: The data are broken up across multiple SQL files.
+NOTE: The data are broken up across multiple SQL files.  8 reports can be generated.
 
 The turnaround_sup_1.sql file will generate data in the following format:
 
