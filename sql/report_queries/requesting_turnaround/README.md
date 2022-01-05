@@ -88,4 +88,4 @@ Users may want to replace [RESHARE URL] with their system's actual base ReShare 
 - **Shipped**: Date/time item shipped by supplier.
 - **Received**: Date/time item received by requester. 
 
- QUESTION:	The Call Number column is "None" for all rows.  No obvious typo in query -- should the column be deleted?  
+ QUESTION:	The Call Number column is "None" for all rows.  No obvious typo in query -- should the column be deleted for now?
