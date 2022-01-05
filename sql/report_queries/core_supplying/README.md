@@ -14,7 +14,7 @@ This report generates data in the following format:
 ## Data dictionary
 * **Supplier**: The institution that a request has been sent to. 
 * **Reqs**: A count of valid requests sent to that institution during the time period specified. 
-* **Unfilled**: A count of requests to which the supplier responded "cannot supply" (Q: does this include requests that autoresponder replied to? )  
+* **Unfilled**: A count of requests to which the supplier responded "cannot supply," including requests handled by autoresponder.  
 * **Filled**: A count of requests for which the requested item was retrieved from the supplier's collection, whether or not it was actually shipped to the requesting library or patron. (Compare with "Shipped") 
 * **Shipped**: A count of requests for which the requested item was shipped to the requesting library or patron. (Compare with "Filled:) 
 * **Cancels**: A count of requests that entered the "Cancelled" state after being received by the supplier. These requests were manually cancelled by the requesting library.  
