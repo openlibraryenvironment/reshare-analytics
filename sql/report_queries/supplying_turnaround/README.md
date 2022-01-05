@@ -17,8 +17,7 @@ The turnaround_sup_1.sql file will generate data in the following format:
 
 |supplier|avg\_time\_to\_fill|med\_time\_to\_fill|
 |------------|------------|------------|
-reshare_east|26:23:04.7435|26:23:04.7435|
-reshare_south|00:00:42.24|00:00:42.24|
+(adding examples here)
 
 
 The turnaround_sup_2.sql file will generate data in the following format:
