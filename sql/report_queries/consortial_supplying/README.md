@@ -4,7 +4,8 @@
 
 Brief description: This report provides numbers of fills between institutions across the consortium.
 
-NOTE: The display format does not match the SME mockup, but the data are there.
+NOTE: As of January 2022, this report is INCOMPLETE.  Use the Core Requesting report instead.
+ALSO NOTE: The display format does not match the SME mockup, but the data are there.
 
 The consortial_supplier.sql file will generate data in the following format:
 
