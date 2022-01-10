@@ -17,7 +17,9 @@ FROM (
         reshare_derived.req_stats nrs2
     WHERE
         nrs.rs_req_id = nrs2.rs_req_id
-        AND (nrs.rs_to_status = 'REQ_SHIPPED'
+        AND (nrs.rs_from_status = 'REQ_EXPECTS_TO_SUPPLY'
+            AND nrs.rs_to_status = 'REQ_SHIPPED'
+            AND nrs2.rs_from_status = 'REQ_SHIPPED'
             AND nrs2.rs_to_status = 'REQ_CHECKED_IN')) AS data
 GROUP BY
     data.requester;
