@@ -10,6 +10,8 @@ Brief description: This report provides time calculations (average and median) f
 - Time to receipt: time between material shipment and material receipt
 - Time total: time between request creation and material receipt 
 
+All times are formatted as: D days, HH:MM:SS.sssssss
+
 NOTE: The data are broken up across multiple SQL files; 7 reports can be generated.
 
 **Report 1: Average and Median Time to Shipment**
@@ -82,10 +84,9 @@ Users may want to replace [RESHARE URL] with their system's actual base ReShare 
 - **Request URL**:  URL for the request in the requester's ReShare tenant.
 - **Supplier**: Supplying institution symbol, formatted: US-PV.  
 - **Title**: Title of requested item. 
-- **Call Number**:  ?Supplier's call number? 
+- **Call Number**:  (Supplier's) call number. 
 - **Barcode**: (Supplier's) barcode number.  
 - **Created**: Date/time request created. 
 - **Shipped**: Date/time item shipped by supplier.
 - **Received**: Date/time item received by requester. 
 
- QUESTION:	The Call Number column is "None" for all rows.  No obvious typo in query -- should the column be deleted for now?
