@@ -18,6 +18,7 @@ FROM (
     WHERE
         nrs.rs_req_id = nrs2.rs_req_id
         AND (nrs.rs_to_status = 'REQ_VALIDATED'
+            AND nrs2.rs_from_status = 'REQ_SHIPPED'
             AND nrs2.rs_to_status = 'REQ_CHECKED_IN')) AS data
 GROUP BY
     data.requester;
