@@ -92,8 +92,7 @@ Users may want to replace [RESHARE URL] with their system's actual base ReShare 
 - **Median time total**: Median time elapsed between supplier assigned and received.
 - **Supplier**: Supplying institution.
 - **Request ID**: The request identifier, which specifies the requesting institution. 
-- **Request URL**: URL for the request in the requester's ReShare tenant.  
-	  QUESTION: why not supplier URL in the supplying report?
+- **Request URL**: URL for the request in the supplier's ReShare tenant.  
 - **Requester**: Requesting institution symbol, formatted US-PV.
 - **Title**: Title of requested item.
 - **Call Number**: Supplier's call number.
