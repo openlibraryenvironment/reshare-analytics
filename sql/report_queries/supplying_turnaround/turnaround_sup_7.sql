@@ -1,3 +1,8 @@
+WITH parameters AS (
+    SELECT
+        '2020-01-01'::date AS start_date,
+        '2030-01-01'::date AS end_date
+)
 SELECT
     supplier,
     avg(date_diff) AS avg_time_total,
@@ -16,14 +21,26 @@ FROM (
         nsts.stst_message AS one_message,
         nsts2.stst_message AS two_message,
         (nsts2.stst_date_created - nsts.stst_date_created) AS date_diff
-    FROM reshare_derived.sup_tat_stats nsts, reshare_derived.sup_tat_stats nsts2
+    FROM
+        reshare_derived.sup_tat_stats nsts,
+        reshare_derived.sup_tat_stats nsts2
     WHERE
         nsts.stst_req_id = nsts2.stst_req_id
         AND (nsts.stst_from_status IS NULL
             AND nsts.stst_to_status = 'RES_IDLE'
             AND nsts2.stst_from_status = 'RES_ITEM_SHIPPED'
             AND nsts2.stst_to_status = 'RES_ITEM_SHIPPED'
-            AND nsts2.stst_message = 'Shipment received by requester')) AS data
-    GROUP BY
-        data.supplier;
+            AND nsts2.stst_message = 'Shipment received by requester')
+        AND nsts.stst_date_created >= (
+            SELECT
+                start_date
+            FROM
+                parameters)
+            AND nsts.stst_date_created < (
+                SELECT
+                    end_date
+                FROM
+                    parameters)) AS data
+GROUP BY
+    data.supplier;
 

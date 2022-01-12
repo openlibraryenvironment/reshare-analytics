@@ -1,3 +1,8 @@
+WITH parameters AS (
+    SELECT
+        '2020-01-01'::date AS start_date,
+        '2030-01-01'::date AS end_date
+)
 SELECT
     requester,
     avg(date_diff) AS avg_time_to_ship,
@@ -18,7 +23,18 @@ FROM (
     WHERE
         nrs.rs_req_id = nrs2.rs_req_id
         AND (nrs.rs_to_status = 'REQ_VALIDATED'
-            AND nrs2.rs_to_status = 'REQ_SHIPPED')) AS data
+            AND nrs2.rs_from_status = 'REQ_EXPECTS_TO_SUPPLY'
+            AND nrs2.rs_to_status = 'REQ_SHIPPED')
+        AND nrs.rs_date_created >= (
+            SELECT
+                start_date
+            FROM
+                parameters)
+            AND nrs.rs_date_created < (
+                SELECT
+                    end_date
+                FROM
+                    parameters)) AS data
 GROUP BY
     data.requester;
 

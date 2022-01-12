@@ -1,3 +1,8 @@
+WITH parameters AS (
+    SELECT
+        '2020-01-01'::date AS start_date,
+        '2030-01-01'::date AS end_date
+)
 SELECT
     supplier,
     avg(date_diff) AS avg_time_to_fill,
@@ -24,7 +29,17 @@ FROM (
         AND (nss.ss_from_status IS NULL
             AND nss.ss_to_status = 'RES_IDLE'
             AND nss2.ss_from_status = 'RES_AWAIT_PICKING'
-            AND nss2.ss_to_status = 'RES_AWAIT_SHIP')) AS data
+            AND nss2.ss_to_status = 'RES_AWAIT_SHIP')
+        AND nss.ss_date_created >= (
+            SELECT
+                start_date
+            FROM
+                parameters)
+            AND nss.ss_date_created < (
+                SELECT
+                    end_date
+                FROM
+                    parameters)) AS data
 GROUP BY
     data.supplier;
 

@@ -1,3 +1,8 @@
+WITH parameters AS (
+    SELECT
+        '2020-01-01'::date AS start_date,
+        '2030-01-01'::date AS end_date
+)
 SELECT
     nsts.stst_supplier AS supplier,
     count(*) AS reqs_btwn_48_72
@@ -13,6 +18,16 @@ WHERE
         AND nsts2.stst_message = 'Shipment received by requester')
     AND ((nsts2.stst_date_created - nsts.stst_date_created) > '2 days'
         AND (nsts2.stst_date_created - nsts.stst_date_created) < '3 days')
+    AND nsts.stst_date_created >= (
+        SELECT
+            start_date
+        FROM
+            parameters)
+    AND nsts.stst_date_created < (
+        SELECT
+            end_date
+        FROM
+            parameters)
 GROUP BY
     nsts.stst_supplier;
 
