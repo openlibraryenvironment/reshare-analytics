@@ -1,3 +1,8 @@
+WITH parameters AS (
+    SELECT
+        '2020-01-01'::date AS start_date,
+        '2030-01-01'::date AS end_date
+)
 SELECT
     ro.ro_hrid AS request_hrid,
     ro.ro_title AS title,
@@ -13,5 +18,16 @@ SELECT
     so.so_item_barcode AS item_barcode
 FROM
     reshare_derived.req_overdue ro
-    JOIN reshare_derived.sup_overdue so ON ro.ro_hrid = so.so_hrid;
+    JOIN reshare_derived.sup_overdue so ON ro.ro_hrid = so.so_hrid
+WHERE
+    ro.ro_due_date_rs::date >= (
+        SELECT
+            start_date
+        FROM
+            parameters)
+    AND ro.ro_due_date_rs::date < (
+        SELECT
+            end_date
+        FROM
+            parameters);
 

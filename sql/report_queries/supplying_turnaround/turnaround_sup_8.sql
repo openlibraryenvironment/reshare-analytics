@@ -1,4 +1,9 @@
 -- Have not found the base URL for a tenant anywhere in the database consistently across all tenants.
+WITH parameters AS (
+    SELECT
+        '2020-01-01'::date AS start_date,
+        '2030-01-01'::date AS end_date
+)
 SELECT
     nstr.str_supplier AS supplier,
     nstr.str_hrid AS request_id,
@@ -24,5 +29,15 @@ FROM
     LEFT JOIN reshare_rs.symbol s ON s.sym_id = nstr.str_requester
 WHERE
     nsts.sts_date_created IS NOT NULL
-    AND nstre.stre_date_created IS NOT NULL;
+    AND nstre.stre_date_created IS NOT NULL
+    AND nsta.sta_date_created >= (
+        SELECT
+            start_date
+        FROM
+            parameters)
+    AND nsta.sta_date_created < (
+        SELECT
+            end_date
+        FROM
+            parameters);
 
