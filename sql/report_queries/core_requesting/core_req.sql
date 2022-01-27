@@ -35,18 +35,18 @@ FROM (
             ELSE
                 0
             END) AS received,
-        round((sum(
-                CASE WHEN (rs_from_status = 'REQ_SHIPPED'
-                    AND rs_to_status = 'REQ_CHECKED_IN') THEN
-                    1
-                ELSE
-                    0
-                END) / cast(sum(
-                    CASE WHEN rs_to_status = 'REQ_VALIDATED' THEN
+        round(coalesce((sum(
+                    CASE WHEN (rs_from_status = 'REQ_SHIPPED'
+                        AND rs_to_status = 'REQ_CHECKED_IN') THEN
                         1
                     ELSE
                         0
-                    END) AS decimal)), 2) AS filled_ratio
+                    END) / nullif (cast(sum(
+                            CASE WHEN rs_to_status = 'REQ_VALIDATED' THEN
+                                1
+                            ELSE
+                                0
+                            END) AS decimal), 0)), 0), 2) AS filled_ratio
     FROM
         reshare_derived.req_stats
     WHERE
@@ -91,18 +91,18 @@ FROM (
                     ELSE
                         0
                     END) AS received,
-                round((sum(
-                        CASE WHEN (rs_from_status = 'REQ_SHIPPED'
-                            AND rs_to_status = 'REQ_CHECKED_IN') THEN
-                            1
-                        ELSE
-                            0
-                        END) / cast(sum(
-                            CASE WHEN rs_to_status = 'REQ_VALIDATED' THEN
+                round(coalesce((sum(
+                            CASE WHEN (rs_from_status = 'REQ_SHIPPED'
+                                AND rs_to_status = 'REQ_CHECKED_IN') THEN
                                 1
                             ELSE
                                 0
-                            END) AS decimal)), 2) AS filled_ratio
+                            END) / nullif (cast(sum(
+                                    CASE WHEN rs_to_status = 'REQ_VALIDATED' THEN
+                                        1
+                                    ELSE
+                                        0
+                                    END) AS decimal), 0)), 0), 2) AS filled_ratio
             FROM
                 reshare_derived.req_stats
             WHERE
