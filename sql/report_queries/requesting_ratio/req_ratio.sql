@@ -2,7 +2,7 @@ SELECT
     reqct.de_name AS institution,
     resct.sup_count AS lending_requests,
     reqct.req_count AS borrowing_requests,
-    round(cast(resct.sup_count AS decimal) / cast(reqct.req_count AS decimal), 2) AS lending_to_borrowing_request_ratio
+    round(coalesce((cast(resct.sup_count AS decimal) / nullif (cast(reqct.req_count AS decimal), 0)), 0), 2) AS lending_to_borrowing_request_ratio
 FROM (
     SELECT
         rs.rs_requester,

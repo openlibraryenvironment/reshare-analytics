@@ -34,19 +34,19 @@ FROM (
             ELSE
                 0
             END) AS cancels,
-        round(cast(sum(
-                    CASE WHEN ss_to_status = 'RES_AWAIT_SHIP' THEN
-                        1
-                    ELSE
-                        0
-                    END) AS decimal) / count(DISTINCT ss_req_id), 2) AS filled_ratio,
-        round(cast(sum(
-                    CASE WHEN ss_to_status = 'RES_ITEM_SHIPPED'
-                        AND ss_from_status = 'RES_AWAIT_SHIP' THEN
-                        1
-                    ELSE
-                        0
-                    END) AS decimal) / count(DISTINCT ss_req_id), 2) AS supplied_ratio
+        round(coalesce((cast(sum(
+                        CASE WHEN ss_to_status = 'RES_AWAIT_SHIP' THEN
+                            1
+                        ELSE
+                            0
+                        END) AS decimal) / nullif (count(DISTINCT ss_req_id), 0)), 0), 2) AS filled_ratio,
+        round(coalesce((cast(sum(
+                        CASE WHEN ss_to_status = 'RES_ITEM_SHIPPED'
+                            AND ss_from_status = 'RES_AWAIT_SHIP' THEN
+                            1
+                        ELSE
+                            0
+                        END) AS decimal) / nullif (count(DISTINCT ss_req_id), 0)), 0), 2) AS supplied_ratio
     FROM
         reshare_derived.sup_stats
     WHERE
@@ -91,19 +91,19 @@ FROM (
                     ELSE
                         0
                     END) AS cancels,
-                round(cast(sum(
-                            CASE WHEN ss_to_status = 'RES_AWAIT_SHIP' THEN
-                                1
-                            ELSE
-                                0
-                            END) AS decimal) / count(DISTINCT ss_req_id), 2) AS filled_ratio,
-                round(cast(sum(
-                            CASE WHEN ss_to_status = 'RES_ITEM_SHIPPED'
-                                AND ss_from_status = 'RES_AWAIT_SHIP' THEN
-                                1
-                            ELSE
-                                0
-                            END) AS decimal) / count(DISTINCT ss_req_id), 2) AS supplied_ratio
+                round(coalesce((cast(sum(
+                                CASE WHEN ss_to_status = 'RES_AWAIT_SHIP' THEN
+                                    1
+                                ELSE
+                                    0
+                                END) AS decimal) / nullif (count(DISTINCT ss_req_id), 0)), 0), 2) AS filled_ratio,
+                round(coalesce((cast(sum(
+                                CASE WHEN ss_to_status = 'RES_ITEM_SHIPPED'
+                                    AND ss_from_status = 'RES_AWAIT_SHIP' THEN
+                                    1
+                                ELSE
+                                    0
+                                END) AS decimal) / nullif (count(DISTINCT ss_req_id), 0)), 0), 2) AS supplied_ratio
             FROM
                 reshare_derived.sup_stats
             WHERE
