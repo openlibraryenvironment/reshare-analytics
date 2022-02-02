@@ -1,7 +1,7 @@
-DROP TABLE IF EXISTS reshare_derived.req_stats;
+DROP TABLE IF EXISTS req_stats;
 
 -- Create a derived table containing information about requester statistics
-CREATE TABLE reshare_derived.req_stats AS
+CREATE TABLE req_stats AS
 SELECT
     pra."__origin" AS rs_requester,
     pra.pra_id AS rs_id,
@@ -21,15 +21,15 @@ ORDER BY
     pra.pra_patron_request_fk,
     pra.pra_date_created ASC;
 
-CREATE INDEX ON reshare_derived.req_stats (rs_requester);
+CREATE INDEX ON req_stats (rs_requester);
 
-CREATE INDEX ON reshare_derived.req_stats (rs_id);
+CREATE INDEX ON req_stats (rs_id);
 
-CREATE INDEX ON reshare_derived.req_stats (rs_req_id);
+CREATE INDEX ON req_stats (rs_req_id);
 
-CREATE INDEX ON reshare_derived.req_stats (rs_date_created);
+CREATE INDEX ON req_stats (rs_date_created);
 
-CREATE INDEX ON reshare_derived.req_stats (rs_from_status);
+CREATE INDEX ON req_stats (rs_from_status);
 
-CREATE INDEX ON reshare_derived.req_stats (rs_to_status);
+CREATE INDEX ON req_stats (rs_to_status);
 

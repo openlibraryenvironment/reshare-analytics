@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS reshare_derived.stat_assi;
+DROP TABLE IF EXISTS stat_assi;
 
-CREATE TABLE reshare_derived.stat_assi AS SELECT DISTINCT
+CREATE TABLE stat_assi AS SELECT DISTINCT
     pra."__origin" AS sta_supplier,
     pra.pra_date_created AS sta_date_created,
     pra.pra_patron_request_fk AS sta_req_id,
@@ -16,13 +16,13 @@ WHERE
 ORDER BY
     pra.pra_date_created ASC;
 
-CREATE INDEX ON reshare_derived.stat_assi (sta_supplier);
+CREATE INDEX ON stat_assi (sta_supplier);
 
-CREATE INDEX ON reshare_derived.stat_assi (sta_date_created);
+CREATE INDEX ON stat_assi (sta_date_created);
 
-CREATE INDEX ON reshare_derived.stat_assi (sta_req_id);
+CREATE INDEX ON stat_assi (sta_req_id);
 
-CREATE INDEX ON reshare_derived.stat_assi (sta_from_status);
+CREATE INDEX ON stat_assi (sta_from_status);
 
-CREATE INDEX ON reshare_derived.stat_assi (sta_to_status);
+CREATE INDEX ON stat_assi (sta_to_status);
 

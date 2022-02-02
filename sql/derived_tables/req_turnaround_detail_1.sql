@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS reshare_derived.rtat_reqs;
+DROP TABLE IF EXISTS rtat_reqs;
 
-CREATE TABLE reshare_derived.rtat_reqs AS SELECT DISTINCT
+CREATE TABLE rtat_reqs AS SELECT DISTINCT
     pr."__origin" AS rtr_requester,
     pr.pr_hrid AS rtr_hrid,
     pr.pr_title AS rtr_title,
@@ -19,19 +19,19 @@ WHERE
 ORDER BY
     pr.pr_date_created ASC;
 
-CREATE INDEX ON reshare_derived.rtat_reqs (rtr_requester);
+CREATE INDEX ON rtat_reqs (rtr_requester);
 
-CREATE INDEX ON reshare_derived.rtat_reqs (rtr_hrid);
+CREATE INDEX ON rtat_reqs (rtr_hrid);
 
-CREATE INDEX ON reshare_derived.rtat_reqs (rtr_title);
+CREATE INDEX ON rtat_reqs (rtr_title);
 
-CREATE INDEX ON reshare_derived.rtat_reqs (rtr_call_number);
+CREATE INDEX ON rtat_reqs (rtr_call_number);
 
-CREATE INDEX ON reshare_derived.rtat_reqs (rtr_barcode);
+CREATE INDEX ON rtat_reqs (rtr_barcode);
 
-CREATE INDEX ON reshare_derived.rtat_reqs (rtr_supplier);
+CREATE INDEX ON rtat_reqs (rtr_supplier);
 
-CREATE INDEX ON reshare_derived.rtat_reqs (rtr_date_created);
+CREATE INDEX ON rtat_reqs (rtr_date_created);
 
-CREATE INDEX ON reshare_derived.rtat_reqs (rtr_id);
+CREATE INDEX ON rtat_reqs (rtr_id);
 

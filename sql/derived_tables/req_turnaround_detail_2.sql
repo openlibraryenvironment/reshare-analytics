@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS reshare_derived.rtat_ship;
+DROP TABLE IF EXISTS rtat_ship;
 
-CREATE TABLE reshare_derived.rtat_ship AS SELECT DISTINCT
+CREATE TABLE rtat_ship AS SELECT DISTINCT
     pra."__origin" AS rts_requester,
     pra.pra_date_created AS rts_date_created,
     pra.pra_patron_request_fk AS rts_req_id,
@@ -16,13 +16,13 @@ AND s2.st_code = 'REQ_SHIPPED'
 ORDER BY
     pra.pra_date_created ASC;
 
-CREATE INDEX ON reshare_derived.rtat_ship (rts_requester);
+CREATE INDEX ON rtat_ship (rts_requester);
 
-CREATE INDEX ON reshare_derived.rtat_ship (rts_date_created);
+CREATE INDEX ON rtat_ship (rts_date_created);
 
-CREATE INDEX ON reshare_derived.rtat_ship (rts_req_id);
+CREATE INDEX ON rtat_ship (rts_req_id);
 
-CREATE INDEX ON reshare_derived.rtat_ship (rts_from_status);
+CREATE INDEX ON rtat_ship (rts_from_status);
 
-CREATE INDEX ON reshare_derived.rtat_ship (rts_to_status);
+CREATE INDEX ON rtat_ship (rts_to_status);
 

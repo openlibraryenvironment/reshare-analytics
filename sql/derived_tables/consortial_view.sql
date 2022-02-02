@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS reshare_derived.consortial_view;
+DROP TABLE IF EXISTS consortial_view;
 
-CREATE TABLE reshare_derived.consortial_view AS SELECT DISTINCT
+CREATE TABLE consortial_view AS SELECT DISTINCT
     prr."__origin" AS cv_requester,
     names.de_name AS cv_nice_requester,
     prr.prr_date_created AS cv_date_created,
@@ -26,19 +26,19 @@ WHERE
     s.st_code = 'REQ_REQUEST_COMPLETE'
     OR s.st_code = 'REQ_SHIPPED';
 
-CREATE INDEX ON reshare_derived.consortial_view (cv_requester);
+CREATE INDEX ON consortial_view (cv_requester);
 
-CREATE INDEX ON reshare_derived.consortial_view (cv_nice_requester);
+CREATE INDEX ON consortial_view (cv_nice_requester);
 
-CREATE INDEX ON reshare_derived.consortial_view (cv_date_created);
+CREATE INDEX ON consortial_view (cv_date_created);
 
-CREATE INDEX ON reshare_derived.consortial_view (cv_last_updated);
+CREATE INDEX ON consortial_view (cv_last_updated);
 
-CREATE INDEX ON reshare_derived.consortial_view (cv_supplier);
+CREATE INDEX ON consortial_view (cv_supplier);
 
-CREATE INDEX ON reshare_derived.consortial_view (cv_patron_request_fk);
+CREATE INDEX ON consortial_view (cv_patron_request_fk);
 
-CREATE INDEX ON reshare_derived.consortial_view (cv_state_fk);
+CREATE INDEX ON consortial_view (cv_state_fk);
 
-CREATE INDEX ON reshare_derived.consortial_view (cv_code);
+CREATE INDEX ON consortial_view (cv_code);
 

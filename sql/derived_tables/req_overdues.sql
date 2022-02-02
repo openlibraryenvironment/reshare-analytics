@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS reshare_derived.req_overdue;
+DROP TABLE IF EXISTS req_overdue;
 
-CREATE TABLE reshare_derived.req_overdue AS SELECT DISTINCT
+CREATE TABLE req_overdue AS SELECT DISTINCT
     pr."__origin" AS ro_requester,
     de.de_name AS ro_requester_nice_name,
     pr.pr_hrid AS ro_hrid,
@@ -30,25 +30,25 @@ WHERE
 ORDER BY
     pr.pr_hrid;
 
-CREATE INDEX ON reshare_derived.req_overdue (ro_requester);
+CREATE INDEX ON req_overdue (ro_requester);
 
-CREATE INDEX ON reshare_derived.req_overdue (ro_requester_nice_name);
+CREATE INDEX ON req_overdue (ro_requester_nice_name);
 
-CREATE INDEX ON reshare_derived.req_overdue (ro_hrid);
+CREATE INDEX ON req_overdue (ro_hrid);
 
-CREATE INDEX ON reshare_derived.req_overdue (ro_title);
+CREATE INDEX ON req_overdue (ro_title);
 
-CREATE INDEX ON reshare_derived.req_overdue (ro_requester_sym);
+CREATE INDEX ON req_overdue (ro_requester_sym);
 
-CREATE INDEX ON reshare_derived.req_overdue (ro_requester_url);
+CREATE INDEX ON req_overdue (ro_requester_url);
 
-CREATE INDEX ON reshare_derived.req_overdue (ro_supplier_sym);
+CREATE INDEX ON req_overdue (ro_supplier_sym);
 
-CREATE INDEX ON reshare_derived.req_overdue (ro_req_state);
+CREATE INDEX ON req_overdue (ro_req_state);
 
-CREATE INDEX ON reshare_derived.req_overdue (ro_due_date_rs);
+CREATE INDEX ON req_overdue (ro_due_date_rs);
 
-CREATE INDEX ON reshare_derived.req_overdue (ro_return_shipped_date);
+CREATE INDEX ON req_overdue (ro_return_shipped_date);
 
-CREATE INDEX ON reshare_derived.req_overdue (ro_last_updated);
+CREATE INDEX ON req_overdue (ro_last_updated);
 

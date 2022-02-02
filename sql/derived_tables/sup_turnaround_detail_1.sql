@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS reshare_derived.stat_reqs;
+DROP TABLE IF EXISTS stat_reqs;
 
-CREATE TABLE reshare_derived.stat_reqs AS SELECT DISTINCT
+CREATE TABLE stat_reqs AS SELECT DISTINCT
     pr."__origin" AS str_supplier,
     pr.pr_hrid AS str_hrid,
     pr.pr_title AS str_title,
@@ -20,19 +20,19 @@ WHERE
 ORDER BY
     pr.pr_date_created ASC;
 
-CREATE INDEX ON reshare_derived.stat_reqs (str_supplier);
+CREATE INDEX ON stat_reqs (str_supplier);
 
-CREATE INDEX ON reshare_derived.stat_reqs (str_hrid);
+CREATE INDEX ON stat_reqs (str_hrid);
 
-CREATE INDEX ON reshare_derived.stat_reqs (str_title);
+CREATE INDEX ON stat_reqs (str_title);
 
-CREATE INDEX ON reshare_derived.stat_reqs (str_call_number);
+CREATE INDEX ON stat_reqs (str_call_number);
 
-CREATE INDEX ON reshare_derived.stat_reqs (str_barcode);
+CREATE INDEX ON stat_reqs (str_barcode);
 
-CREATE INDEX ON reshare_derived.stat_reqs (str_requester);
+CREATE INDEX ON stat_reqs (str_requester);
 
-CREATE INDEX ON reshare_derived.stat_reqs (str_date_created);
+CREATE INDEX ON stat_reqs (str_date_created);
 
-CREATE INDEX ON reshare_derived.stat_reqs (str_id);
+CREATE INDEX ON stat_reqs (str_id);
 

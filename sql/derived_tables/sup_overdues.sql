@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS reshare_derived.sup_overdue;
+DROP TABLE IF EXISTS sup_overdue;
 
-CREATE TABLE reshare_derived.sup_overdue AS SELECT DISTINCT
+CREATE TABLE sup_overdue AS SELECT DISTINCT
     pr."__origin" AS so_supplier,
     de.de_name AS so_supplier_nice_name,
     pr.pr_hrid AS so_hrid,
@@ -25,27 +25,27 @@ WHERE
 ORDER BY
     pr.pr_hrid;
 
-CREATE INDEX ON reshare_derived.sup_overdue (so_supplier);
+CREATE INDEX ON sup_overdue (so_supplier);
 
-CREATE INDEX ON reshare_derived.sup_overdue (so_supplier_nice_name);
+CREATE INDEX ON sup_overdue (so_supplier_nice_name);
 
-CREATE INDEX ON reshare_derived.sup_overdue (so_hrid);
+CREATE INDEX ON sup_overdue (so_hrid);
 
-CREATE INDEX ON reshare_derived.sup_overdue (so_title);
+CREATE INDEX ON sup_overdue (so_title);
 
-CREATE INDEX ON reshare_derived.sup_overdue (so_requester_sym);
+CREATE INDEX ON sup_overdue (so_requester_sym);
 
-CREATE INDEX ON reshare_derived.sup_overdue (so_supplier_url);
+CREATE INDEX ON sup_overdue (so_supplier_url);
 
-CREATE INDEX ON reshare_derived.sup_overdue (so_supplier_sym);
+CREATE INDEX ON sup_overdue (so_supplier_sym);
 
-CREATE INDEX ON reshare_derived.sup_overdue (so_res_state);
+CREATE INDEX ON sup_overdue (so_res_state);
 
-CREATE INDEX ON reshare_derived.sup_overdue (so_due_date_rs);
+CREATE INDEX ON sup_overdue (so_due_date_rs);
 
-CREATE INDEX ON reshare_derived.sup_overdue (so_local_call_number);
+CREATE INDEX ON sup_overdue (so_local_call_number);
 
-CREATE INDEX ON reshare_derived.sup_overdue (so_item_barcode);
+CREATE INDEX ON sup_overdue (so_item_barcode);
 
-CREATE INDEX ON reshare_derived.sup_overdue (so_last_updated);
+CREATE INDEX ON sup_overdue (so_last_updated);
 
