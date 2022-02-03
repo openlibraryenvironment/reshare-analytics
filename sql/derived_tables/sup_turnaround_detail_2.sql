@@ -26,3 +26,4 @@ CREATE INDEX ON stat_assi (sta_from_status);
 
 CREATE INDEX ON stat_assi (sta_to_status);
 
+VACUUM ANALYZE stat_assi;

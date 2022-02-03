@@ -36,3 +36,4 @@ CREATE INDEX ON sup_stats (ss_to_status);
 
 CREATE INDEX ON sup_stats (ss_message);
 
+VACUUM ANALYZE sup_stats;

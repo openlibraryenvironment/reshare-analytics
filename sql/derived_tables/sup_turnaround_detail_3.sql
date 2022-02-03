@@ -26,3 +26,4 @@ CREATE INDEX ON stat_fill (stf_from_status);
 
 CREATE INDEX ON stat_fill (stf_to_status);
 
+VACUUM ANALYZE stat_fill;

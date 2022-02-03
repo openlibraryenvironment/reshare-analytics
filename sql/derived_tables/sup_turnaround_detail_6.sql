@@ -28,3 +28,4 @@ CREATE INDEX ON sup_tat_stats (stst_to_status);
 
 CREATE INDEX ON sup_tat_stats (stst_message);
 
+VACUUM ANALYZE sup_tat_stats;

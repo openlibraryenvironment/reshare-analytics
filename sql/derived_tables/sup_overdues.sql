@@ -49,3 +49,4 @@ CREATE INDEX ON sup_overdue (so_item_barcode);
 
 CREATE INDEX ON sup_overdue (so_last_updated);
 
+VACUUM ANALYZE sup_overdue;
