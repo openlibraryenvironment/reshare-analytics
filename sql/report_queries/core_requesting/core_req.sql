@@ -117,7 +117,25 @@ FROM (
                         FROM
                             parameters)
                     GROUP BY
-                        requester) AS core_req
+                        requester
+                    UNION
+                    SELECT
+                        de_name,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    FROM
+                        reshare_rs.directory_entry de
+                    WHERE
+                        de.de_parent IS NULL
+                        AND de.de_status_fk IS NOT NULL
+                        AND de.de_name NOT IN (
+                            SELECT
+                                rs.rs_requester_nice_name
+                            FROM
+                                reshare_derived.req_stats rs)) AS core_req
 ORDER BY
     (
         CASE WHEN core_req.requester = 'Consortium' THEN
