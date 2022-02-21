@@ -2,10 +2,10 @@ DROP TABLE IF EXISTS consortial_view;
 
 CREATE TABLE consortial_view AS SELECT DISTINCT
     prr."__origin" AS cv_requester,
-    names.de_name AS cv_nice_requester,
+    names.de_name AS cv_requester_nice_name,
     prr.prr_date_created AS cv_date_created,
     prr.prr_last_updated AS cv_last_updated,
-    de.de_name AS cv_supplier,
+    de.de_name AS cv_supplier_nice_name,
     prr.prr_patron_request_fk AS cv_patron_request_fk,
     prr.prr_state_fk AS cv_state_fk,
     s.st_code AS cv_code
@@ -28,13 +28,13 @@ WHERE
 
 CREATE INDEX ON consortial_view (cv_requester);
 
-CREATE INDEX ON consortial_view (cv_nice_requester);
+CREATE INDEX ON consortial_view (cv_requester_nice_name);
 
 CREATE INDEX ON consortial_view (cv_date_created);
 
 CREATE INDEX ON consortial_view (cv_last_updated);
 
-CREATE INDEX ON consortial_view (cv_supplier);
+CREATE INDEX ON consortial_view (cv_supplier_nice_name);
 
 CREATE INDEX ON consortial_view (cv_patron_request_fk);
 

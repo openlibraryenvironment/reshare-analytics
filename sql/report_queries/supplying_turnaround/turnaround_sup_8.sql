@@ -5,10 +5,10 @@ WITH parameters AS (
         '2030-01-01'::date AS end_date
 )
 SELECT
-    nstr.str_supplier AS supplier,
+    nstr.str_supplier_nice_name AS supplier,
     nstr.str_hrid AS request_id,
     concat('[RESHARE URL]', '/request/requests/view/', nstr.str_id, '/flow') AS request_url,
-    s.sym_symbol AS requester,
+    nstr.str_requester_nice_name AS requester,
     nstr.str_title AS title,
     nstr.str_call_number AS call_number,
     nstr.str_barcode AS barcode,
@@ -26,7 +26,6 @@ FROM
     LEFT JOIN reshare_derived.stat_fill nstf ON nstr.str_id = nstf.stf_req_id
     LEFT JOIN reshare_derived.stat_ship nsts ON nstr.str_id = nsts.sts_req_id
     LEFT JOIN reshare_derived.stat_rec nstre ON nstr.str_id = nstre.stre_req_id
-    LEFT JOIN reshare_rs.symbol s ON s.sym_id = nstr.str_requester
 WHERE
     nsts.sts_date_created IS NOT NULL
     AND nstre.stre_date_created IS NOT NULL

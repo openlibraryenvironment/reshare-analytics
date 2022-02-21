@@ -9,7 +9,7 @@ SELECT
     percentile_cont(0.5) WITHIN GROUP (ORDER BY date_diff) AS med_time_to_receipt
 FROM (
     SELECT
-        nrs.rs_requester AS requester,
+        nrs.rs_requester_nice_name AS requester,
         nrs.rs_date_created AS t_start,
         nrs2.rs_date_created AS t_end,
         nrs.rs_req_id,

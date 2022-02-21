@@ -53,3 +53,4 @@ CREATE INDEX ON req_overdue (ro_return_shipped_date);
 CREATE INDEX ON req_overdue (ro_last_updated);
 
 VACUUM ANALYZE req_overdue;
+

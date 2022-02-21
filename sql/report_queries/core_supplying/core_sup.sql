@@ -7,7 +7,7 @@ SELECT
     *
 FROM (
     SELECT
-        ss_supplier AS supplier,
+        ss_supplier_nice_name AS supplier,
         count(DISTINCT ss_req_id) AS reqs,
         sum(
             CASE WHEN ss_to_status = 'RES_UNFILLED' THEN
@@ -64,7 +64,7 @@ FROM (
                 supplier
             UNION
             SELECT
-                'consortium' AS supplier,
+                'Consortium' AS supplier,
                 count(DISTINCT ss_req_id) AS reqs,
                 sum(
                     CASE WHEN ss_to_status = 'RES_UNFILLED' THEN
@@ -121,7 +121,7 @@ FROM (
                         supplier) AS core_sup
 ORDER BY
     (
-        CASE WHEN core_sup.supplier = 'consortium' THEN
+        CASE WHEN core_sup.supplier = 'Consortium' THEN
             0
         ELSE
             1

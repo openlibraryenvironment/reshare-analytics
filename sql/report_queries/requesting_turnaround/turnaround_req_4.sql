@@ -4,7 +4,7 @@ WITH parameters AS (
         '2030-01-01'::date AS end_date
 )
 SELECT
-    nrs.rs_requester,
+    nrs.rs_requester_nice_name,
     count(*) AS reqs_under_48
 FROM
     reshare_derived.req_stats nrs,
@@ -26,5 +26,5 @@ WHERE
         FROM
             parameters)
 GROUP BY
-    nrs.rs_requester;
+    nrs.rs_requester_nice_name;
 

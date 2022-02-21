@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS sup_tat_stats;
 
 CREATE TABLE sup_tat_stats AS SELECT DISTINCT
-    ss_supplier AS stst_supplier,
+    ss_supplier_nice_name AS stst_supplier,
     (array_agg(ss_date_created ORDER BY ss_date_created ASC))[1] AS stst_date_created,
     ss_req_id AS stst_req_id,
     ss_from_status AS stst_from_status,
