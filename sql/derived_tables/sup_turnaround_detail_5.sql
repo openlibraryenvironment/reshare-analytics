@@ -2,7 +2,7 @@
 DROP TABLE IF EXISTS stat_rec;
 
 CREATE TABLE stat_rec AS SELECT DISTINCT
-    pra."__origin" AS stre_supplier,
+    pra.__origin AS stre_supplier,
     (array_agg(pra.pra_date_created ORDER BY pra.pra_date_created ASC))[1] AS stre_date_created,
     pra.pra_patron_request_fk AS stre_req_id,
     s.st_code AS stre_from_status,
@@ -18,7 +18,7 @@ GROUP BY
     pra.pra_patron_request_fk,
     s.st_code,
     s2.st_code,
-    pra."__origin";
+    pra.__origin;
 
 CREATE INDEX ON stat_rec (stre_supplier);
 

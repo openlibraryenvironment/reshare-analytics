@@ -8,7 +8,7 @@ SELECT
     *
 FROM (
     SELECT
-        rs_requester AS requester,
+        rs_requester_nice_name AS requester,
         sum(
             CASE WHEN rs_to_status = 'REQ_VALIDATED' THEN
                 1
@@ -64,7 +64,7 @@ FROM (
                 requester
             UNION
             SELECT
-                'consortium' AS requester,
+                'Consortium' AS requester,
                 sum(
                     CASE WHEN rs_to_status = 'REQ_VALIDATED' THEN
                         1
@@ -120,7 +120,7 @@ FROM (
                         requester) AS core_req
 ORDER BY
     (
-        CASE WHEN core_req.requester = 'consortium' THEN
+        CASE WHEN core_req.requester = 'Consortium' THEN
             0
         ELSE
             1

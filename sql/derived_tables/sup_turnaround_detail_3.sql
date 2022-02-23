@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS stat_fill;
 
 CREATE TABLE stat_fill AS SELECT DISTINCT
-    pra."__origin" AS stf_supplier,
+    pra.__origin AS stf_supplier,
     pra.pra_date_created AS stf_date_created,
     pra.pra_patron_request_fk AS stf_req_id,
     s.st_code AS stf_from_status,

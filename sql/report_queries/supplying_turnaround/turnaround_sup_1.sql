@@ -9,7 +9,7 @@ SELECT
     percentile_cont(0.5) WITHIN GROUP (ORDER BY date_diff) AS med_time_to_fill
 FROM (
     SELECT
-        nss.ss_supplier AS supplier,
+        nss.ss_supplier_nice_name AS supplier,
         nss.ss_date_created AS t_start,
         nss2.ss_date_created AS t_end,
         nss.ss_req_id,

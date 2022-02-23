@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS sup_overdue;
 
 CREATE TABLE sup_overdue AS SELECT DISTINCT
-    pr."__origin" AS so_supplier,
+    pr.__origin AS so_supplier,
     de.de_name AS so_supplier_nice_name,
     pr.pr_hrid AS so_hrid,
     pr.pr_title AS so_title,
