@@ -17,7 +17,7 @@ FROM (
                 reshare_rs.directory_entry de
             WHERE
                 de.de_parent IS NULL
-                AND de.de_status_fk IS NOT NULL) AS names ON rs.rs_requester = names."__origin"
+                AND de.de_status_fk IS NOT NULL) AS names ON rs.rs_requester = names.__origin
         WHERE
             rs.rs_to_status = 'REQ_VALIDATED'
         GROUP BY

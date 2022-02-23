@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS stat_reqs;
 
 CREATE TABLE stat_reqs AS SELECT DISTINCT
-    pr."__origin" AS str_supplier,
+    pr.__origin AS str_supplier,
     names.de_name AS str_supplier_nice_name,
     pr.pr_hrid AS str_hrid,
     pr.pr_title AS str_title,
@@ -19,12 +19,13 @@ FROM
     LEFT JOIN reshare_rs.directory_entry de ON s2.sym_owner_fk = de.de_id
     JOIN (
         SELECT
-            *
+            de2.__origin,
+            de2.de_name
         FROM
-            reshare_rs.directory_entry de
+            reshare_rs.directory_entry de2
         WHERE
-            de.de_parent IS NULL
-            AND de.de_status_fk IS NOT NULL) AS names ON pr."__origin" = names."__origin"
+            de2.de_parent IS NULL
+            AND de2.de_status_fk IS NOT NULL) AS names ON pr.__origin = names.__origin
 WHERE
     pr.pr_is_requester IS FALSE
     AND pr.pr_hrid IS NOT NULL

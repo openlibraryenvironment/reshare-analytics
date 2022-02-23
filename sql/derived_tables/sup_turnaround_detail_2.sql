@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS stat_assi;
 
 CREATE TABLE stat_assi AS SELECT DISTINCT
-    pra."__origin" AS sta_supplier,
+    pra.__origin AS sta_supplier,
     pra.pra_date_created AS sta_date_created,
     pra.pra_patron_request_fk AS sta_req_id,
     s.st_code AS sta_from_status,

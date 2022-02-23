@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS req_overdue;
 
 CREATE TABLE req_overdue AS SELECT DISTINCT
-    pr."__origin" AS ro_requester,
+    pr.__origin AS ro_requester,
     de.de_name AS ro_requester_nice_name,
     pr.pr_hrid AS ro_hrid,
     pr.pr_title AS ro_title,

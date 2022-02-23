@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS rtat_rec;
 
 CREATE TABLE rtat_rec AS SELECT DISTINCT
-    pra."__origin" AS rtre_requester,
+    pra.__origin AS rtre_requester,
     pra.pra_date_created AS rtre_date_created,
     pra.pra_patron_request_fk AS rtre_req_id,
     s.st_code AS rtre_status

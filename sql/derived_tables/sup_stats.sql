@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS sup_stats;
 -- Create a derived table containing information about supplier statistics
 CREATE TABLE sup_stats AS
 SELECT
-    pra."__origin" AS ss_supplier,
+    pra.__origin AS ss_supplier,
     names.de_name AS ss_supplier_nice_name,
     pra.pra_id AS ss_id,
     pra.pra_patron_request_fk AS ss_req_id,
@@ -17,12 +17,13 @@ FROM
     LEFT JOIN reshare_rs.status s2 ON pra.pra_from_status_fk = s2.st_id
     JOIN (
         SELECT
-            *
+            de.__origin,
+            de.de_name
         FROM
             reshare_rs.directory_entry de
         WHERE
             de.de_parent IS NULL
-            AND de.de_status_fk IS NOT NULL) AS names ON pra."__origin" = names."__origin"
+            AND de.de_status_fk IS NOT NULL) AS names ON pra.__origin = names.__origin
 WHERE
     s.st_code LIKE 'RES_%'
     AND (s2.st_code LIKE 'RES_%'
