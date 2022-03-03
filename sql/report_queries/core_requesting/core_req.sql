@@ -135,7 +135,18 @@ FROM (
                             SELECT
                                 rs.rs_requester_nice_name
                             FROM
-                                reshare_derived.req_stats rs)) AS core_req
+                                reshare_derived.req_stats rs
+                            WHERE
+                                rs_date_created >= (
+                                    SELECT
+                                        start_date
+                                    FROM
+                                        parameters)
+                                    AND rs_date_created < (
+                                        SELECT
+                                            end_date
+                                        FROM
+                                            parameters))) AS core_req
 ORDER BY
     (
         CASE WHEN core_req.requester = 'Consortium' THEN
