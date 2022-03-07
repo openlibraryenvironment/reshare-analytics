@@ -118,7 +118,38 @@ FROM (
                         FROM
                             parameters)
                     GROUP BY
-                        supplier) AS core_sup
+                        supplier
+                    UNION
+                    SELECT
+                        de_name,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    FROM
+                        reshare_rs.directory_entry de
+                    WHERE
+                        de.de_parent IS NULL
+                        AND de.de_status_fk IS NOT NULL
+                        AND de.de_name NOT IN (
+                            SELECT
+                                ss.ss_supplier_nice_name
+                            FROM
+                                reshare_derived.sup_stats ss
+                            WHERE
+                                ss_date_created >= (
+                                    SELECT
+                                        start_date
+                                    FROM
+                                        parameters)
+                                    AND ss_date_created < (
+                                        SELECT
+                                            end_date
+                                        FROM
+                                            parameters))) AS core_sup
 ORDER BY
     (
         CASE WHEN core_sup.supplier = 'Consortium' THEN
