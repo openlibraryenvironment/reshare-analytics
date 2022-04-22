@@ -8,7 +8,13 @@ SELECT
 FROM (
     SELECT
         ss_supplier_nice_name AS supplier,
-        count(DISTINCT ss_req_id) AS reqs,
+        sum(
+            CASE WHEN ss_from_status IS NULL
+                AND ss_to_status = 'RES_IDLE' THEN
+                1
+            ELSE
+                0
+            END) AS reqs,
         sum(
             CASE WHEN ss_to_status = 'RES_UNFILLED' THEN
                 1
@@ -39,14 +45,26 @@ FROM (
                             1
                         ELSE
                             0
-                        END) AS decimal) / nullif (count(DISTINCT ss_req_id), 0)), 0), 2) AS filled_ratio,
+                        END) AS decimal) / nullif (sum(
+                        CASE WHEN ss_from_status IS NULL
+                            AND ss_to_status = 'RES_IDLE' THEN
+                            1
+                        ELSE
+                            0
+                        END), 0)), 0), 2) AS filled_ratio,
         round(coalesce((cast(sum(
                         CASE WHEN ss_to_status = 'RES_ITEM_SHIPPED'
                             AND ss_from_status = 'RES_AWAIT_SHIP' THEN
                             1
                         ELSE
                             0
-                        END) AS decimal) / nullif (count(DISTINCT ss_req_id), 0)), 0), 2) AS supplied_ratio
+                        END) AS decimal) / nullif (sum(
+                        CASE WHEN ss_from_status IS NULL
+                            AND ss_to_status = 'RES_IDLE' THEN
+                            1
+                        ELSE
+                            0
+                        END), 0)), 0), 2) AS supplied_ratio
     FROM
         reshare_derived.sup_stats
     WHERE
@@ -65,7 +83,13 @@ FROM (
             UNION
             SELECT
                 'Consortium' AS supplier,
-                count(DISTINCT ss_req_id) AS reqs,
+                sum(
+                    CASE WHEN ss_from_status IS NULL
+                        AND ss_to_status = 'RES_IDLE' THEN
+                        1
+                    ELSE
+                        0
+                    END) AS reqs,
                 sum(
                     CASE WHEN ss_to_status = 'RES_UNFILLED' THEN
                         1
@@ -96,14 +120,26 @@ FROM (
                                     1
                                 ELSE
                                     0
-                                END) AS decimal) / nullif (count(DISTINCT ss_req_id), 0)), 0), 2) AS filled_ratio,
+                                END) AS decimal) / nullif (sum(
+                                CASE WHEN ss_from_status IS NULL
+                                    AND ss_to_status = 'RES_IDLE' THEN
+                                    1
+                                ELSE
+                                    0
+                                END), 0)), 0), 2) AS filled_ratio,
                 round(coalesce((cast(sum(
                                 CASE WHEN ss_to_status = 'RES_ITEM_SHIPPED'
                                     AND ss_from_status = 'RES_AWAIT_SHIP' THEN
                                     1
                                 ELSE
                                     0
-                                END) AS decimal) / nullif (count(DISTINCT ss_req_id), 0)), 0), 2) AS supplied_ratio
+                                END) AS decimal) / nullif (sum(
+                                CASE WHEN ss_from_status IS NULL
+                                    AND ss_to_status = 'RES_IDLE' THEN
+                                    1
+                                ELSE
+                                    0
+                                END), 0)), 0), 2) AS supplied_ratio
             FROM
                 reshare_derived.sup_stats
             WHERE
