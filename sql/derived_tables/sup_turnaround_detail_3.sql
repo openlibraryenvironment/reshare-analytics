@@ -12,9 +12,7 @@ FROM
     LEFT JOIN reshare_rs.status s2 ON pra.pra_to_status_fk = s2.st_id
 WHERE
     s.st_code = 'RES_AWAIT_PICKING'
-    AND s2.st_code = 'RES_AWAIT_SHIP'
-ORDER BY
-    pra.pra_date_created ASC;
+    AND s2.st_code = 'RES_AWAIT_SHIP';
 
 CREATE INDEX ON stat_fill (stf_supplier);
 

@@ -27,10 +27,7 @@ FROM
 WHERE
     s.st_code LIKE 'RES_%'
     AND (s2.st_code LIKE 'RES_%'
-        OR s2.st_code IS NULL)
-ORDER BY
-    pra.pra_patron_request_fk,
-    pra.pra_date_created ASC;
+        OR s2.st_code IS NULL);
 
 CREATE INDEX ON sup_stats (ss_supplier);
 

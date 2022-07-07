@@ -9,9 +9,7 @@ FROM
     reshare_rs.patron_request_audit__ pra
     LEFT JOIN reshare_rs.status s ON pra.pra_to_status_fk = s.st_id
 WHERE
-    s.st_code = 'REQ_CHECKED_IN'
-ORDER BY
-    pra.pra_date_created ASC;
+    s.st_code = 'REQ_CHECKED_IN';
 
 CREATE INDEX ON rtat_rec (rtre_requester);
 

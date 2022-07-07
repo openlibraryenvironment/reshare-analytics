@@ -29,9 +29,7 @@ FROM
 WHERE
     pr.pr_is_requester IS FALSE
     AND pr.pr_hrid IS NOT NULL
-    AND pr.pr_resolved_req_inst_symbol_fk != pr.pr_resolved_sup_inst_symbol_fk
-ORDER BY
-    pr.pr_date_created ASC;
+    AND pr.pr_resolved_req_inst_symbol_fk != pr.pr_resolved_sup_inst_symbol_fk;
 
 CREATE INDEX ON stat_reqs (str_supplier);
 

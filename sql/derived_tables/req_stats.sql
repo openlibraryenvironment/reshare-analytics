@@ -26,10 +26,7 @@ FROM
             AND de.de_status_fk IS NOT NULL) AS names ON pra.__origin = names.__origin
 WHERE
     s.st_code LIKE 'REQ_%'
-    OR s2.st_code LIKE 'REQ_%'
-ORDER BY
-    pra.pra_patron_request_fk,
-    pra.pra_date_created ASC;
+    OR s2.st_code LIKE 'REQ_%';
 
 CREATE INDEX ON req_stats (rs_requester);
 

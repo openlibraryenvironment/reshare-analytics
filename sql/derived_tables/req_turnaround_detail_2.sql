@@ -12,9 +12,7 @@ FROM
     LEFT JOIN reshare_rs.status s2 ON pra.pra_to_status_fk = s2.st_id
 WHERE (s.st_code = 'REQ_EXPECTS_TO_SUPPLY'
     OR s.st_code = 'REQ_CONDITIONAL_ANSWER_RECEIVED')
-AND s2.st_code = 'REQ_SHIPPED'
-ORDER BY
-    pra.pra_date_created ASC;
+AND s2.st_code = 'REQ_SHIPPED';
 
 CREATE INDEX ON rtat_ship (rts_requester);
 

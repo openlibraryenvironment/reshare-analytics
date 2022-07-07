@@ -21,9 +21,7 @@ FROM
     LEFT JOIN reshare_rs.directory_entry de2 ON s3.sym_owner_fk = de2.de_id
 WHERE
     pr.pr_is_requester IS TRUE
-    AND pr.pr_hrid IS NOT NULL
-ORDER BY
-    pr.pr_date_created ASC;
+    AND pr.pr_hrid IS NOT NULL;
 
 CREATE INDEX ON rtat_reqs (rtr_requester);
 

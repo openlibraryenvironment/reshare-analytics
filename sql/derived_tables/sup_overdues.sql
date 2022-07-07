@@ -21,9 +21,7 @@ FROM
 WHERE
     pr.pr_due_date_rs::date < CURRENT_DATE
     AND s2.st_code LIKE 'RES_%'
-    AND s2.st_code NOT LIKE '%_COMPLETE'
-ORDER BY
-    pr.pr_hrid;
+    AND s2.st_code NOT LIKE '%_COMPLETE';
 
 CREATE INDEX ON sup_overdue (so_supplier);
 
