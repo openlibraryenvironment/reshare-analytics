@@ -12,7 +12,7 @@ CREATE TABLE consortial_view AS SELECT DISTINCT
 FROM
     reshare_rs.patron_request_rota prr
     JOIN reshare_rs.status s ON s.st_id = prr.prr_state_fk
-    JOIN reshare_rs.symbol s2 ON prr.prr_peer_symbol_fk = s2.sym_id
+    JOIN reshare_rs.symbol s2 ON prr.prr_peer_symbol_fk::uuid = s2.sym_id
     JOIN reshare_rs.directory_entry de ON s2.sym_owner_fk = de.de_id
     JOIN (
         SELECT

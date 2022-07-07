@@ -15,7 +15,7 @@ CREATE TABLE sup_overdue AS SELECT DISTINCT
     pr.pr_last_updated AS so_last_updated
 FROM
     reshare_rs.patron_request pr
-    JOIN reshare_rs.symbol s ON pr.pr_resolved_sup_inst_symbol_fk = s.sym_id
+    JOIN reshare_rs.symbol s ON pr.pr_resolved_sup_inst_symbol_fk::uuid = s.sym_id
     JOIN reshare_rs.status s2 ON pr.pr_state_fk = s2.st_id
     JOIN reshare_rs.directory_entry de ON s.sym_owner_fk = de.de_id
 WHERE

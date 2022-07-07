@@ -15,7 +15,7 @@ FROM
     reshare_rs.patron_request pr
     LEFT JOIN reshare_rs.patron_request_audit__ pra ON pr.pr_id = pra.pra_patron_request_fk
     LEFT JOIN reshare_rs.status s ON pra.pra_to_status_fk = s.st_id
-    LEFT JOIN reshare_rs.symbol s2 ON pr.pr_resolved_req_inst_symbol_fk = s2.sym_id
+    LEFT JOIN reshare_rs.symbol s2 ON pr.pr_resolved_req_inst_symbol_fk::uuid = s2.sym_id
     LEFT JOIN reshare_rs.directory_entry de ON s2.sym_owner_fk = de.de_id
     JOIN (
         SELECT
