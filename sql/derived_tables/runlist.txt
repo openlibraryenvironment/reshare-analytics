@@ -1,7 +1,5 @@
-symbol_directory_entry.sql
 req_stats.sql
 sup_stats.sql
-req_turnaround_detail_1.sql
 req_turnaround_detail_2.sql
 req_turnaround_detail_3.sql
 sup_turnaround_detail_1.sql
