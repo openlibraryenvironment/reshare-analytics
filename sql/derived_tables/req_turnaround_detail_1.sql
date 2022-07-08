@@ -15,10 +15,10 @@ FROM
     reshare_rs.patron_request pr
     LEFT JOIN reshare_rs.patron_request_audit__ pra ON pr.pr_id = pra.pra_patron_request_fk
     LEFT JOIN reshare_rs.status s ON pra.pra_to_status_fk = s.st_id
-    LEFT JOIN reshare_rs.symbol s2 ON pr.pr_resolved_req_inst_symbol_fk::uuid = s2.sym_id
-    LEFT JOIN reshare_rs.symbol s3 ON pr.pr_resolved_sup_inst_symbol_fk::uuid = s3.sym_id
-    LEFT JOIN reshare_rs.directory_entry de ON s2.sym_owner_fk = de.de_id
-    LEFT JOIN reshare_rs.directory_entry de2 ON s3.sym_owner_fk = de2.de_id
+    LEFT JOIN reshare_rs.symbol s2 ON pr.pr_resolved_req_inst_symbol_fk::uuid = s2.sym_id AND pr.__origin = s2.__origin
+    LEFT JOIN reshare_rs.symbol s3 ON pr.pr_resolved_sup_inst_symbol_fk::uuid = s3.sym_id AND pr.__origin = s3.__origin
+    LEFT JOIN reshare_rs.directory_entry de ON s2.sym_owner_fk = de.de_id AND s2.__origin = de.__origin
+    LEFT JOIN reshare_rs.directory_entry de2 ON s3.sym_owner_fk = de2.de_id AND s3.__origin = de2.__origin
 WHERE
     pr.pr_is_requester IS TRUE
     AND pr.pr_hrid IS NOT NULL;
