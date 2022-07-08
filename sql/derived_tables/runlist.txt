@@ -2,7 +2,6 @@ req_stats.sql
 sup_stats.sql
 req_turnaround_detail_2.sql
 req_turnaround_detail_3.sql
-sup_turnaround_detail_1.sql
 sup_turnaround_detail_2.sql
 sup_turnaround_detail_3.sql
 sup_turnaround_detail_4.sql
