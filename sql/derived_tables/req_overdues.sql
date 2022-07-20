@@ -20,9 +20,13 @@ CREATE TABLE req_overdue AS SELECT DISTINCT
 FROM
     reshare_rs.patron_request pr
     JOIN reshare_rs.symbol s ON pr.pr_resolved_sup_inst_symbol_fk::uuid = s.sym_id
+        AND pr.__origin = s.__origin
     JOIN reshare_rs.status s2 ON pr.pr_state_fk = s2.st_id
+        AND pr.__origin = s2.__origin
     JOIN reshare_rs.symbol s3 ON pr.pr_resolved_req_inst_symbol_fk::uuid = s3.sym_id
+        AND pr.__origin = s3.__origin
     JOIN reshare_rs.directory_entry de ON s3.sym_owner_fk = de.de_id
+        AND s3.__origin = de.__origin
 WHERE
     pr.pr_due_date_rs::date < CURRENT_DATE
     AND s2.st_code LIKE 'REQ_%'

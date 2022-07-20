@@ -14,7 +14,9 @@ SELECT
 FROM
     reshare_rs.patron_request_audit pra
     LEFT JOIN reshare_rs.status s ON pra.pra_to_status_fk = s.st_id
+        AND pra.__origin = s.__origin
     LEFT JOIN reshare_rs.status s2 ON pra.pra_from_status_fk::uuid = s2.st_id
+        AND pra.__origin = s2.__origin
     JOIN (
         SELECT
             de.__origin,

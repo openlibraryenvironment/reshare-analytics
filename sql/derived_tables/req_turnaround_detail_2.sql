@@ -9,7 +9,9 @@ CREATE TABLE rtat_ship AS SELECT DISTINCT
 FROM
     reshare_rs.patron_request_audit__ pra
     LEFT JOIN reshare_rs.status s ON pra.pra_from_status_fk::uuid = s.st_id
+        AND pra.__origin = s.__origin
     LEFT JOIN reshare_rs.status s2 ON pra.pra_to_status_fk = s2.st_id
+        AND pra.__origin = s2.__origin
 WHERE (s.st_code = 'REQ_EXPECTS_TO_SUPPLY'
     OR s.st_code = 'REQ_CONDITIONAL_ANSWER_RECEIVED')
 AND s2.st_code = 'REQ_SHIPPED';
@@ -25,3 +27,4 @@ CREATE INDEX ON rtat_ship (rts_from_status);
 CREATE INDEX ON rtat_ship (rts_to_status);
 
 VACUUM ANALYZE rtat_ship;
+
