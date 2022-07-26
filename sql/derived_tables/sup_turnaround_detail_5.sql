@@ -10,7 +10,9 @@ CREATE TABLE stat_rec AS SELECT DISTINCT
 FROM
     reshare_rs.patron_request_audit__ pra
     LEFT JOIN reshare_rs.status s ON pra.pra_from_status_fk::uuid = s.st_id
+        AND pra.__origin = s.__origin
     LEFT JOIN reshare_rs.status s2 ON pra.pra_to_status_fk = s2.st_id
+        AND pra.__origin = s2.__origin
 WHERE
     s.st_code = 'RES_ITEM_SHIPPED'
     AND s2.st_code = 'RES_ITEM_SHIPPED'
@@ -31,3 +33,4 @@ CREATE INDEX ON stat_rec (stre_from_status);
 CREATE INDEX ON stat_rec (stre_to_status);
 
 VACUUM ANALYZE stat_rec;
+
