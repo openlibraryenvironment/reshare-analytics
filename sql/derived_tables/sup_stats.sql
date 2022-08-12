@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS sup_stats;
 CREATE TABLE sup_stats AS
 SELECT
     pra.__origin AS ss_supplier,
+    pra.__start AS ss_start,
     names.de_name AS ss_supplier_nice_name,
     pra.pra_id AS ss_id,
     pra.pra_patron_request_fk AS ss_req_id,
@@ -25,13 +26,16 @@ FROM
             reshare_rs.directory_entry de
         WHERE
             de.de_parent IS NULL
-            AND de.de_status_fk IS NOT NULL) AS names ON pra.__origin = names.__origin
+            AND de.de_status_fk IS NOT NULL
+            AND de.de_name NOT IN ('Bobst Circulation Desk', 'South Charleston Campus Collection')) AS names ON pra.__origin = names.__origin
 WHERE
     s.st_code LIKE 'RES_%'
     AND (s2.st_code LIKE 'RES_%'
         OR s2.st_code IS NULL);
 
 CREATE INDEX ON sup_stats (ss_supplier);
+
+CREATE INDEX ON sup_stats (ss_start);
 
 CREATE INDEX ON sup_stats (ss_supplier_nice_name);
 

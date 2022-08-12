@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS consortial_view;
 
 CREATE TABLE consortial_view AS SELECT DISTINCT
     prr.__origin AS cv_requester,
+    prr.__start AS cv_start,
     names.de_name AS cv_requester_nice_name,
     prr.prr_date_created AS cv_date_created,
     prr.prr_last_updated AS cv_last_updated,
@@ -25,12 +26,15 @@ FROM
             reshare_rs.directory_entry de2
         WHERE
             de2.de_parent IS NULL
-            AND de2.de_status_fk IS NOT NULL) AS names ON prr.__origin = names.__origin
+            AND de2.de_status_fk IS NOT NULL
+            AND de2.de_name NOT IN ('Bobst Circulation Desk', 'South Charleston Campus Collection')) AS names ON prr.__origin = names.__origin
 WHERE
     s.st_code = 'REQ_REQUEST_COMPLETE'
     OR s.st_code = 'REQ_SHIPPED';
 
 CREATE INDEX ON consortial_view (cv_requester);
+
+CREATE INDEX ON consortial_view (cv_start);
 
 CREATE INDEX ON consortial_view (cv_requester_nice_name);
 
