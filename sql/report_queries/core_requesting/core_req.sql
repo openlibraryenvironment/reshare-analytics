@@ -10,7 +10,9 @@ FROM (
     SELECT
         rs_requester_nice_name AS requester,
         sum(
-            CASE WHEN rs_to_status = 'REQ_VALIDATED' THEN
+            CASE WHEN (rs_from_status = 'REQ_IDLE'
+                OR rs_from_status = 'REQ_INVALID_PATRON')
+                AND rs_to_status = 'REQ_VALIDATED' THEN
                 1
             ELSE
                 0
@@ -49,7 +51,9 @@ FROM (
                     ELSE
                         0
                     END) / nullif (cast(sum(
-                            CASE WHEN rs_to_status = 'REQ_VALIDATED' THEN
+                            CASE WHEN (rs_from_status = 'REQ_IDLE'
+                                OR rs_from_status = 'REQ_INVALID_PATRON')
+                                AND rs_to_status = 'REQ_VALIDATED' THEN
                                 1
                             ELSE
                                 0
@@ -73,7 +77,9 @@ FROM (
             SELECT
                 'Consortium' AS requester,
                 sum(
-                    CASE WHEN rs_to_status = 'REQ_VALIDATED' THEN
+                    CASE WHEN (rs_from_status = 'REQ_IDLE'
+                        OR rs_from_status = 'REQ_INVALID_PATRON')
+                        AND rs_to_status = 'REQ_VALIDATED' THEN
                         1
                     ELSE
                         0
@@ -112,7 +118,9 @@ FROM (
                             ELSE
                                 0
                             END) / nullif (cast(sum(
-                                    CASE WHEN rs_to_status = 'REQ_VALIDATED' THEN
+                                    CASE WHEN (rs_from_status = 'REQ_IDLE'
+                                        OR rs_from_status = 'REQ_INVALID_PATRON')
+                                        AND rs_to_status = 'REQ_VALIDATED' THEN
                                         1
                                     ELSE
                                         0

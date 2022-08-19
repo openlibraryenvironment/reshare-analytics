@@ -22,7 +22,9 @@ FROM (
         reshare_derived.req_stats nrs2
     WHERE
         nrs.rs_req_id = nrs2.rs_req_id
-        AND (nrs.rs_to_status = 'REQ_VALIDATED'
+        AND (((nrs.rs_from_status = 'REQ_IDLE'
+                    OR nrs.rs_from_status = 'REQ_INVALID_PATRON')
+                AND nrs.rs_to_status = 'REQ_VALIDATED')
             AND nrs2.rs_from_status = 'REQ_SHIPPED'
             AND nrs2.rs_to_status = 'REQ_CHECKED_IN')
         AND nrs.rs_date_created >= (
