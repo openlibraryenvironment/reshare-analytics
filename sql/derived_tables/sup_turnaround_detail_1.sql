@@ -26,8 +26,7 @@ FROM
             reshare_rs.directory_entry de2
         WHERE
             de2.de_parent IS NULL
-            AND de2.de_status_fk IS NOT NULL
-            AND de2.de_name NOT IN ('Bobst Circulation Desk', 'South Charleston Campus Collection')) AS names ON pr.__origin = names.__origin
+            AND de2.de_status_fk IS NOT NULL) AS names ON pr.__origin = names.__origin
 WHERE
     pr.pr_is_requester IS FALSE
     AND pr.pr_hrid IS NOT NULL
