@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS req_stats;
 CREATE TABLE req_stats AS
 SELECT
     pra.__origin AS rs_requester,
+    pra.__start AS rs_start,
     names.de_name AS rs_requester_nice_name,
     pra.pra_id AS rs_id,
     pra.pra_patron_request_fk AS rs_req_id,
@@ -16,7 +17,7 @@ FROM
     LEFT JOIN reshare_rs.status s ON pra.pra_to_status_fk = s.st_id
         AND pra.__origin = s.__origin
     LEFT JOIN reshare_rs.status s2 ON pra.pra_from_status_fk::uuid = s2.st_id
-        AND pra.__origin = s.__origin
+        AND pra.__origin = s2.__origin
     JOIN (
         SELECT
             de.__origin,
@@ -31,6 +32,8 @@ WHERE
     OR s2.st_code LIKE 'REQ_%';
 
 CREATE INDEX ON req_stats (rs_requester);
+
+CREATE INDEX ON req_stats (rs_start);
 
 CREATE INDEX ON req_stats (rs_requester_nice_name);
 

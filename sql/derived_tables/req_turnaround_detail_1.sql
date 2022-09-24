@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS rtat_reqs;
 
 CREATE TABLE rtat_reqs AS SELECT DISTINCT
     pr.__origin AS rtr_requester,
+    pr.__start AS rtr_start,
     de.de_name AS rtr_requester_nice_name,
     pr.pr_hrid AS rtr_hrid,
     pr.pr_title AS rtr_title,
@@ -13,23 +14,21 @@ CREATE TABLE rtat_reqs AS SELECT DISTINCT
     pr.pr_id AS rtr_id
 FROM
     reshare_rs.patron_request pr
-    LEFT JOIN reshare_rs.patron_request_audit__ pra ON pr.pr_id = pra.pra_patron_request_fk
-        AND pr.__origin = pra.__origin
-    LEFT JOIN reshare_rs.status s ON pra.pra_to_status_fk = s.st_id
-        AND pra.__origin = s.__origin
-    LEFT JOIN reshare_rs.symbol s2 ON pr.pr_resolved_req_inst_symbol_fk::uuid = s2.sym_id
+    LEFT JOIN reshare_rs.symbol s ON pr.pr_resolved_req_inst_symbol_fk::uuid = s.sym_id
+        AND pr.__origin = s.__origin
+    LEFT JOIN reshare_rs.symbol s2 ON pr.pr_resolved_sup_inst_symbol_fk::uuid = s2.sym_id
         AND pr.__origin = s2.__origin
-    LEFT JOIN reshare_rs.symbol s3 ON pr.pr_resolved_sup_inst_symbol_fk::uuid = s3.sym_id
-        AND pr.__origin = s3.__origin
-    LEFT JOIN reshare_rs.directory_entry de ON s2.sym_owner_fk = de.de_id
-        AND s2.__origin = de.__origin
-    LEFT JOIN reshare_rs.directory_entry de2 ON s3.sym_owner_fk = de2.de_id
-        AND s3.__origin = de2.__origin
+    LEFT JOIN reshare_rs.directory_entry de ON s.sym_owner_fk = de.de_id
+        AND s.__origin = de.__origin
+    LEFT JOIN reshare_rs.directory_entry de2 ON s2.sym_owner_fk = de2.de_id
+        AND s2.__origin = de2.__origin
 WHERE
     pr.pr_is_requester IS TRUE
     AND pr.pr_hrid IS NOT NULL;
 
 CREATE INDEX ON rtat_reqs (rtr_requester);
+
+CREATE INDEX ON rtat_reqs (rtr_start);
 
 CREATE INDEX ON rtat_reqs (rtr_requester_nice_name);
 

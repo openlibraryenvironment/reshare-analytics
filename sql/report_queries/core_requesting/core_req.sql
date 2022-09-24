@@ -10,7 +10,9 @@ FROM (
     SELECT
         rs_requester_nice_name AS requester,
         sum(
-            CASE WHEN rs_to_status = 'REQ_VALIDATED' THEN
+            CASE WHEN (rs_from_status = 'REQ_IDLE'
+                OR rs_from_status = 'REQ_INVALID_PATRON')
+                AND rs_to_status = 'REQ_VALIDATED' THEN
                 1
             ELSE
                 0
@@ -28,9 +30,14 @@ FROM (
                 0
             END) AS unfilled,
         sum(
+            CASE WHEN rs_to_status = 'REQ_FILLED_LOCALLY' THEN
+                1
+            ELSE
+                0
+            END) AS filled_locally,
+        sum(
             CASE WHEN (rs_from_status = 'REQ_SHIPPED'
-                AND rs_to_status = 'REQ_CHECKED_IN')
-                OR rs_to_status = 'REQ_FILLED_LOCALLY' THEN
+                AND rs_to_status = 'REQ_CHECKED_IN') THEN
                 1
             ELSE
                 0
@@ -39,10 +46,14 @@ FROM (
                     CASE WHEN (rs_from_status = 'REQ_SHIPPED'
                         AND rs_to_status = 'REQ_CHECKED_IN') THEN
                         1
+                    WHEN rs_to_status = 'REQ_FILLED_LOCALLY' THEN
+                        1
                     ELSE
                         0
                     END) / nullif (cast(sum(
-                            CASE WHEN rs_to_status = 'REQ_VALIDATED' THEN
+                            CASE WHEN (rs_from_status = 'REQ_IDLE'
+                                OR rs_from_status = 'REQ_INVALID_PATRON')
+                                AND rs_to_status = 'REQ_VALIDATED' THEN
                                 1
                             ELSE
                                 0
@@ -66,7 +77,9 @@ FROM (
             SELECT
                 'Consortium' AS requester,
                 sum(
-                    CASE WHEN rs_to_status = 'REQ_VALIDATED' THEN
+                    CASE WHEN (rs_from_status = 'REQ_IDLE'
+                        OR rs_from_status = 'REQ_INVALID_PATRON')
+                        AND rs_to_status = 'REQ_VALIDATED' THEN
                         1
                     ELSE
                         0
@@ -84,9 +97,14 @@ FROM (
                         0
                     END) AS unfilled,
                 sum(
+                    CASE WHEN rs_to_status = 'REQ_FILLED_LOCALLY' THEN
+                        1
+                    ELSE
+                        0
+                    END) AS filled_locally,
+                sum(
                     CASE WHEN (rs_from_status = 'REQ_SHIPPED'
-                        AND rs_to_status = 'REQ_CHECKED_IN')
-                        OR rs_to_status = 'REQ_FILLED_LOCALLY' THEN
+                        AND rs_to_status = 'REQ_CHECKED_IN') THEN
                         1
                     ELSE
                         0
@@ -95,10 +113,14 @@ FROM (
                             CASE WHEN (rs_from_status = 'REQ_SHIPPED'
                                 AND rs_to_status = 'REQ_CHECKED_IN') THEN
                                 1
+                            WHEN rs_to_status = 'REQ_FILLED_LOCALLY' THEN
+                                1
                             ELSE
                                 0
                             END) / nullif (cast(sum(
-                                    CASE WHEN rs_to_status = 'REQ_VALIDATED' THEN
+                                    CASE WHEN (rs_from_status = 'REQ_IDLE'
+                                        OR rs_from_status = 'REQ_INVALID_PATRON')
+                                        AND rs_to_status = 'REQ_VALIDATED' THEN
                                         1
                                     ELSE
                                         0
@@ -121,6 +143,7 @@ FROM (
                     UNION
                     SELECT
                         de_name,
+                        0,
                         0,
                         0,
                         0,

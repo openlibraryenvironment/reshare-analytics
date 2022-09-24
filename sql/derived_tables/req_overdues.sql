@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS req_overdue;
 
 CREATE TABLE req_overdue AS SELECT DISTINCT
     pr.__origin AS ro_requester,
+    pr.__start AS ro_start,
     de.de_name AS ro_requester_nice_name,
     pr.pr_hrid AS ro_hrid,
     pr.pr_title AS ro_title,
@@ -33,6 +34,8 @@ WHERE
     AND s2.st_code NOT LIKE '%_COMPLETE';
 
 CREATE INDEX ON req_overdue (ro_requester);
+
+CREATE INDEX ON req_overdue (ro_start);
 
 CREATE INDEX ON req_overdue (ro_requester_nice_name);
 

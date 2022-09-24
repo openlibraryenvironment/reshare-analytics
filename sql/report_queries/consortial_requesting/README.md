@@ -4,8 +4,7 @@
 
 Brief description: This report provides numbers of requests between institutions across the consortium.
 
-NOTE: As of January 2022, this report is INCOMPLETE.  Use the Core Requesting report instead.
-ALSO NOTE: The display format does not match the SME mockup, but the data are there.
+NOTE: The display format does not match the SME mockup, but will display as desired if using the [ReShare Reports Portal](https://github.com/indexdata/reshare-reports-portal).
 
 The consortial_requester.sql file will generate data in the following format:
 
