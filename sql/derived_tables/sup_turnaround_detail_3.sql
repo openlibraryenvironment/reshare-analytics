@@ -15,7 +15,8 @@ FROM
         AND pra.__origin = s2.__origin
 WHERE
     s.st_code = 'RES_AWAIT_PICKING'
-    AND s2.st_code = 'RES_AWAIT_SHIP';
+    AND (s2.st_code = 'RES_AWAIT_SHIP'
+        OR s2.st_code = 'RES_ITEM_SHIPPED');
 
 CREATE INDEX ON stat_fill (stf_supplier);
 

@@ -26,7 +26,8 @@ FROM (
         reshare_derived.sup_tat_stats nsts2
     WHERE
         nsts.stst_req_id = nsts2.stst_req_id
-        AND (nsts.stst_from_status = 'RES_AWAIT_SHIP'
+        AND ((nsts.stst_from_status = 'RES_AWAIT_PICKING'
+                OR nsts.stst_from_status = 'RES_AWAIT_SHIP')
             AND nsts.stst_to_status = 'RES_ITEM_SHIPPED'
             AND nsts2.stst_from_status = 'RES_ITEM_SHIPPED'
             AND nsts2.stst_to_status = 'RES_ITEM_SHIPPED'
