@@ -29,7 +29,8 @@ FROM (
         AND (nss.ss_from_status IS NULL
             AND nss.ss_to_status = 'RES_IDLE'
             AND nss2.ss_from_status = 'RES_AWAIT_PICKING'
-            AND nss2.ss_to_status = 'RES_AWAIT_SHIP')
+            AND (nss2.ss_to_status = 'RES_AWAIT_SHIP'
+                OR nss2.ss_to_status = 'RES_ITEM_SHIPPED'))
         AND nss.ss_date_created >= (
             SELECT
                 start_date

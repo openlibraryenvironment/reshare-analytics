@@ -22,14 +22,18 @@ FROM (
                 0
             END) AS unfilled,
         sum(
-            CASE WHEN ss_to_status = 'RES_AWAIT_SHIP' THEN
+            CASE WHEN ((ss_to_status = 'RES_AWAIT_SHIP')
+                OR (ss_to_status = 'RES_ITEM_SHIPPED'
+                    AND ss_from_status = 'RES_AWAIT_PICKING')) THEN
                 1
             ELSE
                 0
             END) AS filled,
         sum(
-            CASE WHEN ss_to_status = 'RES_ITEM_SHIPPED'
-                AND ss_from_status = 'RES_AWAIT_SHIP' THEN
+            CASE WHEN ((ss_to_status = 'RES_ITEM_SHIPPED'
+                AND ss_from_status = 'RES_AWAIT_SHIP')
+                OR (ss_to_status = 'RES_ITEM_SHIPPED'
+                    AND ss_from_status = 'RES_AWAIT_PICKING')) THEN
                 1
             ELSE
                 0
@@ -41,7 +45,9 @@ FROM (
                 0
             END) AS cancels,
         round(coalesce((cast(sum(
-                        CASE WHEN ss_to_status = 'RES_AWAIT_SHIP' THEN
+                        CASE WHEN ((ss_to_status = 'RES_AWAIT_SHIP')
+                            OR (ss_to_status = 'RES_ITEM_SHIPPED'
+                                AND ss_from_status = 'RES_AWAIT_PICKING')) THEN
                             1
                         ELSE
                             0
@@ -53,8 +59,10 @@ FROM (
                             0
                         END), 0)), 0), 2) AS filled_ratio,
         round(coalesce((cast(sum(
-                        CASE WHEN ss_to_status = 'RES_ITEM_SHIPPED'
-                            AND ss_from_status = 'RES_AWAIT_SHIP' THEN
+                        CASE WHEN ((ss_to_status = 'RES_ITEM_SHIPPED'
+                            AND ss_from_status = 'RES_AWAIT_SHIP')
+                            OR (ss_to_status = 'RES_ITEM_SHIPPED'
+                                AND ss_from_status = 'RES_AWAIT_PICKING')) THEN
                             1
                         ELSE
                             0
@@ -97,14 +105,18 @@ FROM (
                         0
                     END) AS unfilled,
                 sum(
-                    CASE WHEN ss_to_status = 'RES_AWAIT_SHIP' THEN
+                    CASE WHEN ((ss_to_status = 'RES_AWAIT_SHIP')
+                        OR (ss_to_status = 'RES_ITEM_SHIPPED'
+                            AND ss_from_status = 'RES_AWAIT_PICKING')) THEN
                         1
                     ELSE
                         0
                     END) AS filled,
                 sum(
-                    CASE WHEN ss_to_status = 'RES_ITEM_SHIPPED'
-                        AND ss_from_status = 'RES_AWAIT_SHIP' THEN
+                    CASE WHEN ((ss_to_status = 'RES_ITEM_SHIPPED'
+                        AND ss_from_status = 'RES_AWAIT_SHIP')
+                        OR (ss_to_status = 'RES_ITEM_SHIPPED'
+                            AND ss_from_status = 'RES_AWAIT_PICKING')) THEN
                         1
                     ELSE
                         0
@@ -116,7 +128,9 @@ FROM (
                         0
                     END) AS cancels,
                 round(coalesce((cast(sum(
-                                CASE WHEN ss_to_status = 'RES_AWAIT_SHIP' THEN
+                                CASE WHEN ((ss_to_status = 'RES_AWAIT_SHIP')
+                                    OR (ss_to_status = 'RES_ITEM_SHIPPED'
+                                        AND ss_from_status = 'RES_AWAIT_PICKING')) THEN
                                     1
                                 ELSE
                                     0
@@ -128,8 +142,10 @@ FROM (
                                     0
                                 END), 0)), 0), 2) AS filled_ratio,
                 round(coalesce((cast(sum(
-                                CASE WHEN ss_to_status = 'RES_ITEM_SHIPPED'
-                                    AND ss_from_status = 'RES_AWAIT_SHIP' THEN
+                                CASE WHEN ((ss_to_status = 'RES_ITEM_SHIPPED'
+                                    AND ss_from_status = 'RES_AWAIT_SHIP')
+                                    OR (ss_to_status = 'RES_ITEM_SHIPPED'
+                                        AND ss_from_status = 'RES_AWAIT_PICKING')) THEN
                                     1
                                 ELSE
                                     0

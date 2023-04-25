@@ -22,7 +22,7 @@ WHERE
             parameters)
 GROUP BY
     cv.cv_supplier_nice_name,
-    cv_requester_nice_name
+    cv.cv_requester_nice_name
 ORDER BY
     cv.cv_supplier_nice_name;
 

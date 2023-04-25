@@ -13,9 +13,9 @@ FROM
         AND pra.__origin = s.__origin
     LEFT JOIN reshare_rs.status s2 ON pra.pra_to_status_fk = s2.st_id
         AND pra.__origin = s2.__origin
-WHERE
-    s.st_code = 'RES_AWAIT_SHIP'
-    AND s2.st_code = 'RES_ITEM_SHIPPED';
+WHERE (s.st_code = 'RES_AWAIT_PICKING'
+    OR s.st_code = 'RES_AWAIT_SHIP')
+AND s2.st_code = 'RES_ITEM_SHIPPED';
 
 CREATE INDEX ON stat_ship (sts_supplier);
 
