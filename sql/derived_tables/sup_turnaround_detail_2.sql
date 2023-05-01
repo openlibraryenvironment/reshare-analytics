@@ -1,3 +1,5 @@
+--metadb:table stat_assi
+
 DROP TABLE IF EXISTS stat_assi;
 
 CREATE TABLE stat_assi AS SELECT DISTINCT

@@ -1,3 +1,5 @@
+--metadb:table req_overdue
+
 DROP TABLE IF EXISTS req_overdue;
 
 CREATE TABLE req_overdue AS SELECT DISTINCT

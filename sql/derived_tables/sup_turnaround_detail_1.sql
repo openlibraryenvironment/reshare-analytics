@@ -1,3 +1,5 @@
+--metadb:table stat_reqs
+
 DROP TABLE IF EXISTS stat_reqs;
 
 CREATE TABLE stat_reqs AS SELECT DISTINCT

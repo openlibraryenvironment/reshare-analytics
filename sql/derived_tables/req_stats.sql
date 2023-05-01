@@ -1,3 +1,5 @@
+--metadb:table req_stats
+
 DROP TABLE IF EXISTS req_stats;
 
 -- Create a derived table containing information about requester statistics

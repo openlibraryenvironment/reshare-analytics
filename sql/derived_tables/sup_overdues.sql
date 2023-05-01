@@ -1,3 +1,5 @@
+--metadb:table sup_overdue
+
 DROP TABLE IF EXISTS sup_overdue;
 
 CREATE TABLE sup_overdue AS SELECT DISTINCT

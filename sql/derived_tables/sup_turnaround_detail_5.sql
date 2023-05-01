@@ -1,3 +1,5 @@
+--metadb:table stat_rec
+
 -- Not sure if listagg in redshift can mimic the array_agg functionality, won't know until we can test. Necessary because an item can be received multiple times, see SOUTH-6.
 DROP TABLE IF EXISTS stat_rec;
 

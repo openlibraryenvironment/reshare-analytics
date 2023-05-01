@@ -1,3 +1,5 @@
+--metadb:table consortial_view
+
 DROP TABLE IF EXISTS consortial_view;
 
 CREATE TABLE consortial_view AS SELECT DISTINCT

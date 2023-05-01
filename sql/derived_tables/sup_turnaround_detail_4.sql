@@ -1,3 +1,5 @@
+--metadb:table stat_ship
+
 DROP TABLE IF EXISTS stat_ship;
 
 CREATE TABLE stat_ship AS SELECT DISTINCT

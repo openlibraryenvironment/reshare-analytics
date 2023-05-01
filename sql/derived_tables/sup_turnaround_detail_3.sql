@@ -1,3 +1,5 @@
+--metadb:table stat_fill
+
 DROP TABLE IF EXISTS stat_fill;
 
 CREATE TABLE stat_fill AS SELECT DISTINCT

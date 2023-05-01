@@ -1,3 +1,5 @@
+--metadb:table sup_stats
+
 DROP TABLE IF EXISTS sup_stats;
 
 -- Create a derived table containing information about supplier statistics

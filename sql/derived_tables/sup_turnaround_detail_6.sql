@@ -1,3 +1,5 @@
+--metadb:table sup_tat_stats
+
 DROP TABLE IF EXISTS sup_tat_stats;
 
 CREATE TABLE sup_tat_stats AS SELECT DISTINCT

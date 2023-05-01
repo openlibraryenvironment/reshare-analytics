@@ -1,3 +1,5 @@
+--metadb:table rtat_rec
+
 DROP TABLE IF EXISTS rtat_rec;
 
 CREATE TABLE rtat_rec AS SELECT DISTINCT
