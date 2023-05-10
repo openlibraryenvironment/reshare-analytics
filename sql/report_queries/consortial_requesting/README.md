@@ -2,7 +2,7 @@
 
 ## Report Details
 
-Brief description: This report provides numbers of requests between institutions across the consortium.
+Brief description: This report provides numbers of filled requests between institutions across the consortium.
 
 NOTE: The display format does not match the SME mockup, but will display as desired if using the [ReShare Reports Portal](https://github.com/indexdata/reshare-reports-portal).
 
