@@ -55,6 +55,3 @@ CREATE INDEX ON stat_reqs (str_requester_nice_name);
 CREATE INDEX ON stat_reqs (str_date_created);
 
 CREATE INDEX ON stat_reqs (str_id);
-
-VACUUM ANALYZE stat_reqs;
-

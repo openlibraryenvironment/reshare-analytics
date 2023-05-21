@@ -49,6 +49,3 @@ CREATE INDEX ON rtat_reqs (rtr_supplier_nice_name);
 CREATE INDEX ON rtat_reqs (rtr_date_created);
 
 CREATE INDEX ON rtat_reqs (rtr_id);
-
-VACUUM ANALYZE rtat_reqs;
-

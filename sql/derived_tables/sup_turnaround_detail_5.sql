@@ -37,6 +37,3 @@ CREATE INDEX ON stat_rec (stre_req_id);
 CREATE INDEX ON stat_rec (stre_from_status);
 
 CREATE INDEX ON stat_rec (stre_to_status);
-
-VACUUM ANALYZE stat_rec;
-

@@ -50,6 +50,3 @@ CREATE INDEX ON consortial_view (cv_patron_request_fk);
 CREATE INDEX ON consortial_view (cv_state_fk);
 
 CREATE INDEX ON consortial_view (cv_code);
-
-VACUUM ANALYZE consortial_view;
-

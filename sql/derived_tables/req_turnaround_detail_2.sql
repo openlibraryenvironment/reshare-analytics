@@ -30,6 +30,3 @@ CREATE INDEX ON rtat_ship (rts_req_id);
 CREATE INDEX ON rtat_ship (rts_from_status);
 
 CREATE INDEX ON rtat_ship (rts_to_status);
-
-VACUUM ANALYZE rtat_ship;
-

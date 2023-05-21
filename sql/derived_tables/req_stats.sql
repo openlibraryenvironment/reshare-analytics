@@ -48,6 +48,3 @@ CREATE INDEX ON req_stats (rs_date_created);
 CREATE INDEX ON req_stats (rs_from_status);
 
 CREATE INDEX ON req_stats (rs_to_status);
-
-VACUUM ANALYZE req_stats;
-

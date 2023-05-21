@@ -31,6 +31,3 @@ CREATE INDEX ON sup_tat_stats (stst_req_id);
 CREATE INDEX ON sup_tat_stats (stst_from_status);
 
 CREATE INDEX ON sup_tat_stats (stst_to_status);
-
-VACUUM ANALYZE sup_tat_stats;
-

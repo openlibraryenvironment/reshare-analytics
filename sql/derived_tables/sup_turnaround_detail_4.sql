@@ -30,6 +30,3 @@ CREATE INDEX ON stat_ship (sts_req_id);
 CREATE INDEX ON stat_ship (sts_from_status);
 
 CREATE INDEX ON stat_ship (sts_to_status);
-
-VACUUM ANALYZE stat_ship;
-

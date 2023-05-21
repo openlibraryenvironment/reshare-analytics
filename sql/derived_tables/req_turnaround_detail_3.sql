@@ -24,6 +24,3 @@ CREATE INDEX ON rtat_rec (rtre_date_created);
 CREATE INDEX ON rtat_rec (rtre_req_id);
 
 CREATE INDEX ON rtat_rec (rtre_status);
-
-VACUUM ANALYZE rtat_rec;
-

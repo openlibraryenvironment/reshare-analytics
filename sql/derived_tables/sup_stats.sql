@@ -49,6 +49,3 @@ CREATE INDEX ON sup_stats (ss_date_created);
 CREATE INDEX ON sup_stats (ss_from_status);
 
 CREATE INDEX ON sup_stats (ss_to_status);
-
-VACUUM ANALYZE sup_stats;
-
