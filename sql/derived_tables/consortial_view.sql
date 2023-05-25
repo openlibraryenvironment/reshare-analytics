@@ -32,21 +32,3 @@ FROM
 WHERE
     s.st_code = 'REQ_REQUEST_COMPLETE'
     OR s.st_code = 'REQ_SHIPPED';
-
-CREATE INDEX ON consortial_view (cv_requester);
-
-CREATE INDEX ON consortial_view (cv_start);
-
-CREATE INDEX ON consortial_view (cv_requester_nice_name);
-
-CREATE INDEX ON consortial_view (cv_date_created);
-
-CREATE INDEX ON consortial_view (cv_last_updated);
-
-CREATE INDEX ON consortial_view (cv_supplier_nice_name);
-
-CREATE INDEX ON consortial_view (cv_patron_request_fk);
-
-CREATE INDEX ON consortial_view (cv_state_fk);
-
-CREATE INDEX ON consortial_view (cv_code);

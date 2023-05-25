@@ -27,25 +27,3 @@ FROM
 WHERE
     pr.pr_is_requester IS TRUE
     AND pr.pr_hrid IS NOT NULL;
-
-CREATE INDEX ON rtat_reqs (rtr_requester);
-
-CREATE INDEX ON rtat_reqs (rtr_start);
-
-CREATE INDEX ON rtat_reqs (rtr_requester_nice_name);
-
-CREATE INDEX ON rtat_reqs (rtr_hrid);
-
-CREATE INDEX ON rtat_reqs (rtr_title);
-
-CREATE INDEX ON rtat_reqs (rtr_call_number);
-
-CREATE INDEX ON rtat_reqs (rtr_barcode);
-
-CREATE INDEX ON rtat_reqs (rtr_supplier);
-
-CREATE INDEX ON rtat_reqs (rtr_supplier_nice_name);
-
-CREATE INDEX ON rtat_reqs (rtr_date_created);
-
-CREATE INDEX ON rtat_reqs (rtr_id);

@@ -18,15 +18,3 @@ FROM
 WHERE (s.st_code = 'RES_AWAIT_PICKING'
     OR s.st_code = 'RES_AWAIT_SHIP')
 AND s2.st_code = 'RES_ITEM_SHIPPED';
-
-CREATE INDEX ON stat_ship (sts_supplier);
-
-CREATE INDEX ON stat_ship (sts_start);
-
-CREATE INDEX ON stat_ship (sts_date_created);
-
-CREATE INDEX ON stat_ship (sts_req_id);
-
-CREATE INDEX ON stat_ship (sts_from_status);
-
-CREATE INDEX ON stat_ship (sts_to_status);

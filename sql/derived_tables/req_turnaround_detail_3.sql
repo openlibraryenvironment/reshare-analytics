@@ -14,13 +14,3 @@ FROM
         AND pra.__origin = s.__origin
 WHERE
     s.st_code = 'REQ_CHECKED_IN';
-
-CREATE INDEX ON rtat_rec (rtre_requester);
-
-CREATE INDEX ON rtat_rec (rtre_start);
-
-CREATE INDEX ON rtat_rec (rtre_date_created);
-
-CREATE INDEX ON rtat_rec (rtre_req_id);
-
-CREATE INDEX ON rtat_rec (rtre_status);

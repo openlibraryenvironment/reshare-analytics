@@ -19,15 +19,3 @@ GROUP BY
     stst_message,
     stst_supplier,
     stst_start;
-
-CREATE INDEX ON sup_tat_stats (stst_supplier);
-
-CREATE INDEX ON sup_tat_stats (stst_start);
-
-CREATE INDEX ON sup_tat_stats (stst_date_created);
-
-CREATE INDEX ON sup_tat_stats (stst_req_id);
-
-CREATE INDEX ON sup_tat_stats (stst_from_status);
-
-CREATE INDEX ON sup_tat_stats (stst_to_status);

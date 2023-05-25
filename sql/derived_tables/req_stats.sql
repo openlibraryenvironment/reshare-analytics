@@ -32,19 +32,3 @@ FROM
 WHERE
     s.st_code LIKE 'REQ_%'
     OR s2.st_code LIKE 'REQ_%';
-
-CREATE INDEX ON req_stats (rs_requester);
-
-CREATE INDEX ON req_stats (rs_start);
-
-CREATE INDEX ON req_stats (rs_requester_nice_name);
-
-CREATE INDEX ON req_stats (rs_id);
-
-CREATE INDEX ON req_stats (rs_req_id);
-
-CREATE INDEX ON req_stats (rs_date_created);
-
-CREATE INDEX ON req_stats (rs_from_status);
-
-CREATE INDEX ON req_stats (rs_to_status);

@@ -33,19 +33,3 @@ WHERE
     s.st_code LIKE 'RES_%'
     AND (s2.st_code LIKE 'RES_%'
         OR s2.st_code IS NULL);
-
-CREATE INDEX ON sup_stats (ss_supplier);
-
-CREATE INDEX ON sup_stats (ss_start);
-
-CREATE INDEX ON sup_stats (ss_supplier_nice_name);
-
-CREATE INDEX ON sup_stats (ss_id);
-
-CREATE INDEX ON sup_stats (ss_req_id);
-
-CREATE INDEX ON sup_stats (ss_date_created);
-
-CREATE INDEX ON sup_stats (ss_from_status);
-
-CREATE INDEX ON sup_stats (ss_to_status);

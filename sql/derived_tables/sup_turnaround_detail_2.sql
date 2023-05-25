@@ -18,15 +18,3 @@ FROM
 WHERE
     s.st_code IS NULL
     AND s2.st_code = 'RES_IDLE';
-
-CREATE INDEX ON stat_assi (sta_supplier);
-
-CREATE INDEX ON stat_assi (sta_start);
-
-CREATE INDEX ON stat_assi (sta_date_created);
-
-CREATE INDEX ON stat_assi (sta_req_id);
-
-CREATE INDEX ON stat_assi (sta_from_status);
-
-CREATE INDEX ON stat_assi (sta_to_status);

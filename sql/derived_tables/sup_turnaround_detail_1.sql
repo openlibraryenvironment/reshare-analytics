@@ -33,25 +33,3 @@ WHERE
     pr.pr_is_requester IS FALSE
     AND pr.pr_hrid IS NOT NULL
     AND pr.pr_resolved_req_inst_symbol_fk != pr.pr_resolved_sup_inst_symbol_fk;
-
-CREATE INDEX ON stat_reqs (str_supplier);
-
-CREATE INDEX ON stat_reqs (str_start);
-
-CREATE INDEX ON stat_reqs (str_supplier_nice_name);
-
-CREATE INDEX ON stat_reqs (str_hrid);
-
-CREATE INDEX ON stat_reqs (str_title);
-
-CREATE INDEX ON stat_reqs (str_call_number);
-
-CREATE INDEX ON stat_reqs (str_barcode);
-
-CREATE INDEX ON stat_reqs (str_requester);
-
-CREATE INDEX ON stat_reqs (str_requester_nice_name);
-
-CREATE INDEX ON stat_reqs (str_date_created);
-
-CREATE INDEX ON stat_reqs (str_id);

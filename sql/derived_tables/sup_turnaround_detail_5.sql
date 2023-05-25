@@ -25,15 +25,3 @@ GROUP BY
     s2.st_code,
     pra.__origin,
     pra.__start;
-
-CREATE INDEX ON stat_rec (stre_supplier);
-
-CREATE INDEX ON stat_rec (stre_start);
-
-CREATE INDEX ON stat_rec (stre_date_created);
-
-CREATE INDEX ON stat_rec (stre_req_id);
-
-CREATE INDEX ON stat_rec (stre_from_status);
-
-CREATE INDEX ON stat_rec (stre_to_status);

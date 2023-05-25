@@ -34,27 +34,3 @@ WHERE
     pr.pr_due_date_rs::date < CURRENT_DATE
     AND s2.st_code LIKE 'REQ_%'
     AND s2.st_code NOT LIKE '%_COMPLETE';
-
-CREATE INDEX ON req_overdue (ro_requester);
-
-CREATE INDEX ON req_overdue (ro_start);
-
-CREATE INDEX ON req_overdue (ro_requester_nice_name);
-
-CREATE INDEX ON req_overdue (ro_hrid);
-
-CREATE INDEX ON req_overdue (ro_title);
-
-CREATE INDEX ON req_overdue (ro_requester_sym);
-
-CREATE INDEX ON req_overdue (ro_requester_url);
-
-CREATE INDEX ON req_overdue (ro_supplier_sym);
-
-CREATE INDEX ON req_overdue (ro_req_state);
-
-CREATE INDEX ON req_overdue (ro_due_date_rs);
-
-CREATE INDEX ON req_overdue (ro_return_shipped_date);
-
-CREATE INDEX ON req_overdue (ro_last_updated);

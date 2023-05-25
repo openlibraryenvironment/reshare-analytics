@@ -28,29 +28,3 @@ WHERE
     pr.pr_due_date_rs::date < CURRENT_DATE
     AND s2.st_code LIKE 'RES_%'
     AND s2.st_code NOT LIKE '%_COMPLETE';
-
-CREATE INDEX ON sup_overdue (so_supplier);
-
-CREATE INDEX ON sup_overdue (so_start);
-
-CREATE INDEX ON sup_overdue (so_supplier_nice_name);
-
-CREATE INDEX ON sup_overdue (so_hrid);
-
-CREATE INDEX ON sup_overdue (so_title);
-
-CREATE INDEX ON sup_overdue (so_requester_sym);
-
-CREATE INDEX ON sup_overdue (so_supplier_url);
-
-CREATE INDEX ON sup_overdue (so_supplier_sym);
-
-CREATE INDEX ON sup_overdue (so_res_state);
-
-CREATE INDEX ON sup_overdue (so_due_date_rs);
-
-CREATE INDEX ON sup_overdue (so_local_call_number);
-
-CREATE INDEX ON sup_overdue (so_item_barcode);
-
-CREATE INDEX ON sup_overdue (so_last_updated);

@@ -18,15 +18,3 @@ FROM
 WHERE (s.st_code = 'REQ_EXPECTS_TO_SUPPLY'
     OR s.st_code = 'REQ_CONDITIONAL_ANSWER_RECEIVED')
 AND s2.st_code = 'REQ_SHIPPED';
-
-CREATE INDEX ON rtat_ship (rts_requester);
-
-CREATE INDEX ON rtat_ship (rts_start);
-
-CREATE INDEX ON rtat_ship (rts_date_created);
-
-CREATE INDEX ON rtat_ship (rts_req_id);
-
-CREATE INDEX ON rtat_ship (rts_from_status);
-
-CREATE INDEX ON rtat_ship (rts_to_status);
