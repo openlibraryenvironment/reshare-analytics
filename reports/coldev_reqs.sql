@@ -1,5 +1,4 @@
---metadb:report coldev_reqs -- Details of all requests placed by an institution's users
---metadb:param institution text -- Name of institution as used in __origin columns
+--metadb:report coldev_reqs
 
 CREATE FUNCTION report.coldev_reqs(institution text)
     RETURNS TABLE( lpr_hrid text,
@@ -43,3 +42,5 @@ SELECT DISTINCT ( lpr_hrid,
          ) AS coldevdata
 $$
 LANGUAGE SQL;
+
+COMMENT ON FUNCTION coldev_reqs IS 'Details of all requests placed by an institution''s users';

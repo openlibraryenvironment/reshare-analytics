@@ -1,5 +1,4 @@
---metadb:report coldev_rr -- All requests placed by an institution's users and if the request was fulfilled
---metadb:param institution text -- Name of institution as used in __origin columns
+--metadb:report coldev_rr
 
 CREATE FUNCTION report.coldev_rr(institution text)
     RETURNS TABLE(lrr_req_id text, lrr_filled int8) AS
@@ -15,3 +14,5 @@ SELECT rs.rs_req_id AS lrr_req_id,
     GROUP BY rs.rs_req_id
 $$
 LANGUAGE SQL;
+
+COMMENT ON FUNCTION report.coldev_rr IS 'All requests placed by an institution''s users and if the request was fulfilled';
