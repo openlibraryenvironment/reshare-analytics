@@ -1,2 +1,2 @@
-coldev_rr.sql
-coldev_reqs.sql
+coldev_rr
+coldev_reqs

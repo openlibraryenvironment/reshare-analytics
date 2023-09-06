@@ -1,18 +1,21 @@
 --metadb:report coldev_reqs
 
-CREATE FUNCTION report.coldev_reqs(institution text)
-    RETURNS TABLE( lpr_hrid text,
-                   lpr_title text,
-                   lpr_author text,
-                   lpr_isbn text,
-                   lpr_patron_identifier text,
-                   lpr_patron_email text,
-                   lpr_date_created timestamp,
-                   lpr_pub_date text,
-                   lpr_filled int8,
-                   lpr_bib_record_id text
-                 ) AS
-$$
+DROP FUNCTION IF EXISTS coldev_reqs;
+
+CREATE FUNCTION coldev_reqs(
+    institution text)
+RETURNS TABLE(
+    lpr_hrid text,
+    lpr_title text,
+    lpr_author text,
+    lpr_isbn text,
+    lpr_patron_identifier text,
+    lpr_patron_email text,
+    lpr_date_created timestamp,
+    lpr_pub_date text,
+    lpr_filled int8,
+    lpr_bib_record_id text)
+AS $$
 SELECT DISTINCT ( lpr_hrid,
                   lpr_title,
                   lpr_author,
@@ -36,11 +39,13 @@ SELECT DISTINCT ( lpr_hrid,
                   pr.pr_bib_record_id AS lpr_bib_record_id
            FROM reshare_rs.patron_request AS pr
                LEFT JOIN ( SELECT lrr_req_id::uuid, lrr_filled
-                               FROM report.coldev_rr(institution)
+                               FROM coldev_rr(institution)
                          ) AS lrr ON pr.pr_id = lrr.lrr_req_id
            WHERE pr.pr_is_requester AND pr.__origin = institution
          ) AS coldevdata
 $$
-LANGUAGE SQL;
+LANGUAGE SQL
+STABLE
+PARALLEL SAFE;
 
 COMMENT ON FUNCTION coldev_reqs IS 'Details of all requests placed by an institution''s users';
