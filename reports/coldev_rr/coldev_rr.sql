@@ -1,4 +1,4 @@
---metadb:report coldev_rr
+--metadb:function coldev_rr
 
 DROP FUNCTION IF EXISTS coldev_rr;
 
@@ -14,7 +14,7 @@ SELECT rs.rs_req_id AS lrr_req_id,
                  ELSE 0
             END
           ) AS lrr_filled
-    FROM reshare_derived.req_stats AS rs
+    FROM req_stats() AS rs
     WHERE rs.rs_requester = institution
     GROUP BY rs.rs_req_id
 $$

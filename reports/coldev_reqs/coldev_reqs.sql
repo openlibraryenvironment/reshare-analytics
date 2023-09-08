@@ -1,4 +1,4 @@
---metadb:report coldev_reqs
+--metadb:function coldev_reqs
 
 DROP FUNCTION IF EXISTS coldev_reqs;
 
