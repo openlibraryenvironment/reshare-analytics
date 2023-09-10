@@ -27,7 +27,7 @@ SELECT DISTINCT pr.__origin AS so_supplier,
                 concat('[RESHARE URL]', '/supply/requests/view/', pr.pr_id, '/flow') AS so_supplier_url,
                 s.sym_symbol AS so_supplier_sym,
                 s2.st_code AS so_res_state,
-                pr.pr_due_date_rs AS so_due_date_rs,
+                pr.pr_due_date_rs::timestamp AS so_due_date_rs,
                 pr.pr_local_call_number AS so_local_call_number,
                 pr.pr_selected_item_barcode AS so_item_barcode,
                 pr.pr_last_updated AS so_last_updated

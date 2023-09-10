@@ -8,7 +8,7 @@ SELECT
     cv_requester_nice_name AS requester,
     count(*) AS count_of_requests
 FROM
-    reshare_derived.consortial_view cv
+    report.consortial_view() AS cv
 WHERE
     cv.cv_date_created >= (
         SELECT

@@ -19,7 +19,7 @@ SELECT DISTINCT ss_supplier_nice_name AS stst_supplier,
                 ss_from_status AS stst_from_status,
                 ss_to_status AS stst_to_status,
                 ss_message AS stst_message
-    FROM sup_stats
+    FROM sup_stats()
     GROUP BY stst_req_id, stst_from_status, stst_to_status, stst_message, stst_supplier, stst_start
 $$
 LANGUAGE SQL

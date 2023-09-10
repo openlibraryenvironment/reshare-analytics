@@ -18,8 +18,8 @@ FROM (
         nrs2.rs_to_status,
         (nrs2.rs_date_created - nrs.rs_date_created) AS date_diff
     FROM
-        reshare_derived.req_stats nrs,
-        reshare_derived.req_stats nrs2
+        report.req_stats() AS nrs,
+        report.req_stats() AS nrs2
     WHERE
         nrs.rs_req_id = nrs2.rs_req_id
         AND (((nrs.rs_from_status = 'REQ_IDLE'

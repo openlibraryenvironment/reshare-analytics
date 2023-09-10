@@ -26,7 +26,7 @@ SELECT DISTINCT pr.__origin AS ro_requester,
                 concat('[RESHARE URL]', '/request/requests/view/', pr.pr_id, '/flow') AS ro_requester_url,
                 s.sym_symbol AS ro_supplier_sym,
                 s2.st_code AS ro_req_state,
-                pr.pr_due_date_rs AS ro_due_date_rs,
+                pr.pr_due_date_rs::timestamp AS ro_due_date_rs,
                 CASE WHEN s2.st_code = 'REQ_SHIPPED_TO_SUPPLIER' THEN pr.pr_last_updated
                      ELSE NULL
                 END AS ro_return_shipped_date,

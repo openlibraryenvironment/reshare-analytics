@@ -7,8 +7,8 @@ SELECT
     nsts.stst_supplier AS supplier,
     count(*) AS reqs_under_48
 FROM
-    reshare_derived.sup_tat_stats nsts,
-    reshare_derived.sup_tat_stats nsts2
+    report.sup_tat_stats() AS nsts,
+    report.sup_tat_stats() AS nsts2
 WHERE
     nsts.stst_req_id = nsts2.stst_req_id
     AND (nsts.stst_from_status IS NULL

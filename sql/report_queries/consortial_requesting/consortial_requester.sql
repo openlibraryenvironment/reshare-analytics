@@ -8,7 +8,7 @@ SELECT
     cv_supplier_nice_name AS supplier,
     count(*) AS count_of_requests
 FROM
-    reshare_derived.consortial_view cv
+    report.consortial_view() AS cv
 WHERE
     cv.cv_date_created >= (
         SELECT

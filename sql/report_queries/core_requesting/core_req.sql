@@ -59,7 +59,7 @@ FROM (
                                 0
                             END) AS decimal), 0)), 0), 2) AS filled_ratio
     FROM
-        reshare_derived.req_stats
+        report.req_stats()
     WHERE
         rs_date_created >= (
             SELECT
@@ -126,7 +126,7 @@ FROM (
                                         0
                                     END) AS decimal), 0)), 0), 2) AS filled_ratio
             FROM
-                reshare_derived.req_stats
+                report.req_stats()
             WHERE
                 rs_date_created >= (
                     SELECT
@@ -158,7 +158,7 @@ FROM (
                             SELECT
                                 rs.rs_requester_nice_name
                             FROM
-                                reshare_derived.req_stats rs
+                                report.req_stats() AS rs
                             WHERE
                                 rs_date_created >= (
                                     SELECT

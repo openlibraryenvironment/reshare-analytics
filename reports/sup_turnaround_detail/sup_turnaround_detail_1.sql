@@ -23,7 +23,7 @@ SELECT DISTINCT pr.__origin AS str_supplier,
                 pr.pr_title AS str_title,
                 pr.pr_local_call_number AS str_call_number,
                 pr.pr_selected_item_barcode AS str_barcode,
-                pr.pr_resolved_req_inst_symbol_fk AS str_requester,
+                pr.pr_resolved_req_inst_symbol_fk::uuid AS str_requester,
                 de.de_name AS str_requester_nice_name,
                 pr.pr_date_created AS str_date_created,
                 pr.pr_id AS str_id

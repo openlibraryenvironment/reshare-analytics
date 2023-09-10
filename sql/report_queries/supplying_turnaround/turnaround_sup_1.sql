@@ -22,8 +22,8 @@ FROM (
         nss2.ss_message AS two_message,
         (nss2.ss_date_created - nss.ss_date_created) AS date_diff
     FROM
-        reshare_derived.sup_stats nss,
-        reshare_derived.sup_stats nss2
+        report.sup_stats() AS nss,
+        report.sup_stats() AS nss2
     WHERE
         nss.ss_req_id = nss2.ss_req_id
         AND (nss.ss_from_status IS NULL
