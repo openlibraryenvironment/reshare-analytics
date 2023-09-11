@@ -74,7 +74,7 @@ FROM (
                             0
                         END), 0)), 0), 2) AS supplied_ratio
     FROM
-        report.sup_stats()
+        reshare_derived.sup_stats
     WHERE
         ss_date_created >= (
             SELECT
@@ -157,7 +157,7 @@ FROM (
                                     0
                                 END), 0)), 0), 2) AS supplied_ratio
             FROM
-                report.sup_stats()
+                reshare_derived.sup_stats
             WHERE
                 ss_date_created >= (
                     SELECT
@@ -190,7 +190,7 @@ FROM (
                             SELECT
                                 ss.ss_supplier_nice_name
                             FROM
-                                report.sup_stats() AS ss
+                                reshare_derived.sup_stats ss
                             WHERE
                                 ss_date_created >= (
                                     SELECT

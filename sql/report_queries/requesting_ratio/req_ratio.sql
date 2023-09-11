@@ -9,7 +9,7 @@ FROM (
         names.de_name,
         count(*) AS req_count
     FROM
-        report.req_stats() AS rs
+        reshare_derived.req_stats rs
         JOIN (
             SELECT
                 *
@@ -28,7 +28,7 @@ FROM (
             ss.ss_supplier,
             count(DISTINCT ss_req_id) AS sup_count
         FROM
-            report.sup_stats() AS ss
+            reshare_derived.sup_stats ss
         GROUP BY
             ss.ss_supplier) AS resct ON reqct.rs_requester = resct.ss_supplier;
 

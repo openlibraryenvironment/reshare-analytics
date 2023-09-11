@@ -19,9 +19,9 @@ SELECT
     (ntr2.rtre_date_created - nts.rts_date_created) AS time_to_receipt,
     (ntr2.rtre_date_created - ntr.rtr_date_created) AS total_time
 FROM
-    report.rtat_reqs() AS ntr
-    LEFT JOIN report.rtat_ship() AS nts ON ntr.rtr_id = nts.rts_req_id
-    LEFT JOIN report.rtat_rec() AS ntr2 ON ntr.rtr_id = ntr2.rtre_req_id
+    reshare_derived.rtat_reqs ntr
+    LEFT JOIN reshare_derived.rtat_ship nts ON ntr.rtr_id = nts.rts_req_id
+    LEFT JOIN reshare_derived.rtat_rec ntr2 ON ntr.rtr_id = ntr2.rtre_req_id
 WHERE
     nts.rts_date_created IS NOT NULL
     AND ntr2.rtre_date_created IS NOT NULL

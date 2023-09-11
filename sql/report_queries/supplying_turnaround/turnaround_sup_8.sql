@@ -21,11 +21,11 @@ SELECT
     (nstre.stre_date_created - nsta.sta_date_created) AS time_to_receipt,
     (nstre.stre_date_created - nsta.sta_date_created) AS total_time
 FROM
-    report.stat_reqs() AS nstr
-    LEFT JOIN report.stat_assi() AS nsta ON nstr.str_id = nsta.sta_req_id
-    LEFT JOIN report.stat_fill() AS nstf ON nstr.str_id = nstf.stf_req_id
-    LEFT JOIN report.stat_ship() AS nsts ON nstr.str_id = nsts.sts_req_id
-    LEFT JOIN report.stat_rec() AS nstre ON nstr.str_id = nstre.stre_req_id
+    reshare_derived.stat_reqs nstr
+    LEFT JOIN reshare_derived.stat_assi nsta ON nstr.str_id = nsta.sta_req_id
+    LEFT JOIN reshare_derived.stat_fill nstf ON nstr.str_id = nstf.stf_req_id
+    LEFT JOIN reshare_derived.stat_ship nsts ON nstr.str_id = nsts.sts_req_id
+    LEFT JOIN reshare_derived.stat_rec nstre ON nstr.str_id = nstre.stre_req_id
 WHERE
     nsts.sts_date_created IS NOT NULL
     AND nstre.stre_date_created IS NOT NULL

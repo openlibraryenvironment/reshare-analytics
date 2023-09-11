@@ -7,8 +7,8 @@ SELECT
     nrs.rs_requester_nice_name,
     count(*) AS reqs_btwn_48_72
 FROM
-    report.req_stats() AS nrs,
-    report.req_stats() AS nrs2
+    reshare_derived.req_stats nrs,
+    reshare_derived.req_stats nrs2
 WHERE
     nrs.rs_req_id = nrs2.rs_req_id
     AND (((nrs.rs_from_status = 'REQ_IDLE'

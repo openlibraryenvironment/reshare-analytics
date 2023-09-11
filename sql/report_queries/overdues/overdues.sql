@@ -17,8 +17,8 @@ SELECT
     so.so_local_call_number AS call_number,
     so.so_item_barcode AS item_barcode
 FROM
-    report.req_overdue() AS ro
-    JOIN report.sup_overdue() AS so ON ro.ro_hrid = so.so_hrid
+    reshare_derived.req_overdue ro
+    JOIN reshare_derived.sup_overdue so ON ro.ro_hrid = so.so_hrid
 WHERE
     ro.ro_due_date_rs::date >= (
         SELECT
