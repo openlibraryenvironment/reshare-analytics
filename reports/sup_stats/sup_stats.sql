@@ -27,7 +27,7 @@ SELECT pra.__origin AS ss_supplier,
        pra.pra_message AS ss_message
     FROM reshare_rs.patron_request_audit AS pra
         LEFT JOIN reshare_rs.status AS s ON pra.pra_to_status_fk = s.st_id AND pra.__origin = s.__origin
-        LEFT JOIN reshare_rs.status AS s2 ON pra.pra_from_status_fk::uuid = s2.st_id AND pra.__origin = s2.__origin
+        LEFT JOIN reshare_rs.status AS s2 ON pra.pra_from_status_fk = s2.st_id AND pra.__origin = s2.__origin
         JOIN ( SELECT de.__origin,
                       de.de_name
                    FROM reshare_rs.directory_entry AS de
