@@ -1,0 +1,19 @@
+{
+    "displayName": "ReShare core_requesting report",
+    "description": "ReShare canned report created in 2021",
+    "instructions": "Choose a start and end date for the reporting period",
+    "parameters": [
+        {
+            "name": "start_date",
+            "displayName": "Earliest request date (yyyy-mm-dd)",
+            "type": "date",
+            "required": true
+        },
+        {
+            "name": "end_date",
+            "displayName": "End date (yyyy-mm-dd) - for month end, use 1st day of next month",
+            "type": "date",
+            "required": true
+        }
+    ]
+}
